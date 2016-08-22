@@ -16,7 +16,9 @@ h1{
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*index*/
-
+.container {
+    margin-top: 20px;
+}
 
 .icon-bar {
   color: black;
@@ -114,6 +116,10 @@ border-radius: 50%;
 /*remove border for the indgredien thumbnail*/
 .img-thumbnail{
   border:none;
+}
+
+#calories{
+  font-weight: bold;
 }
 /*-----------------------------------------------------------------------------------------------------*/
 
