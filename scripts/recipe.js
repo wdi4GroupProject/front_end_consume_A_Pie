@@ -4,6 +4,7 @@ console.log("recipe JS connected");
 
 $(function() {
 
+
   // function to get params from URL
   var QueryString = function () {
   // This function is anonymous, is executed immediately and
@@ -28,11 +29,13 @@ $(function() {
   return query_string;
   }();
 
+
 var $recipeImage        = $('#recipeimage');
 var $recipeTitle        = $('#recipe-title');
 var $recipeDirections   = $('#intructions');
 var $recipeIngredients  = $('#ingredient-img');
 var $recipeCalories     = $('#calories');
+
 
 // var image1_url = "/views/recipe.html?recipe_id="+ <?>.id
 // var image1 = "<a href="+ image1_url+ "><img src= "+ <?>.image_url+ "></a>"
