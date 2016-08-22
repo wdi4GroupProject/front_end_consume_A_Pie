@@ -41,7 +41,7 @@ var $recipeCalories     = $('#calories');
      $("<p>" + data.ingredients + "</p>"));
 
      $recipeCalories.html(
-     $("<p> Calories: " + data.total_calories + "</p>"));
+     $("<h4> Calories: " + data.total_calories + "</h4>"));
 
    })
    .fail(function(request, textStatus, errorThrown) {
