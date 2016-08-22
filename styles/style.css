@@ -103,6 +103,50 @@ h1{
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*weekly*/
+.background-col-light{
+  background-color: #E6F0F0;
+  padding: 0px 0 30px 30px;
+  height:auto;
+}
+.background-col-yellow{
+  background-color: #F9C680;
+  padding: 0px 0 30px 30px;
+  height:auto;
+
+}
+.day{
+text-decoration: underline;
+}
+
+
+.img-thumbnail{
+  overflow:hidden;
+  object-fit: contain;
+  padding-right:10px;
+  padding-left:10px;
+}
+.meal-img-margin-top{
+  margin-top: 10px;
+}
+.meal-img-margin-top img{
+  max-width: 150px !important;
+  max-height: 150px !important;
+  border: 0 none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.meal-img-margin-top img{
+display:inline-block;
+}
+.row li {
+  width: 33.3%;
+  float: left;
+  list-style: none;
+}
+.row {
+     margin-right: 0px;
+    margin-left: 0px;
+}
 /*-----------------------------------------------------------------------------------------------------*/
 
 
