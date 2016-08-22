@@ -6,15 +6,12 @@
     <title> Meal Planner | Recipe </title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
     <!-- group style sheet -->
     <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
-
     <nav class="navbar navbar">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -24,12 +21,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Food Planner</a>
+      <a class="navbar-brand" href="/views/index.html">Food Planner</a>
     </div>
-
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav  pull-right">
-
       <li><a href="/views/meal_planner.html">Meal Planner</a></li>
       <li><a href="/views/recipe.html">Recipe</a></li>
       <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
@@ -44,103 +39,45 @@
   </div>
 </div>
 </nav>
-
     <div class="container ">
     <div class="row ">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <h2 id="recipe-title">Title</h2>
     </div>
-
     </div>
     <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-12">
       <div id="recipeimage"></div>
     </div>
-
-    <div class="col-lg-6 col-md-6 col-sm-12 recipe-container-border p-b-1">
+    <div class="col-lg-6 col-md-6 col-sm-12 recipe-container-border p-2">
       <h3>Ingredients</h3>
       <div class="container">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-5">
           <!-- Setting img placeholder for ingredients with text -->
-          <div id="ingredient-img">
 
-
-          <div class="img-thumbnail text-center">
-            <img src="" class="ingredient-img" alt="" />
-            <p>
-              Salt
-            </p>
-          </div>
-          <div class="img-thumbnail text-center">
-            <img src="" class="ingredient-img" alt="" />
-            <p>
-              Salt
-            </p>
-          </div>
-          <div class="img-thumbnail text-center">
-            <img src="" class="ingredient-img" alt="" />
-            <p>
-              Salt
-            </p>
-          </div>
+          <div class="text-left"  id="ingredient-img">
         </div>
-      </div>
-      </div>
 
+      </div>
+      </div>
     </div>
-
-      <h3>Instructions</h3>
 
       <div id="intructions">
+      </div>
+      <div id="calories">
 
       </div>
-      <!-- <h3>Nutrition Values</h3>
-      <div class="table-responsive table-bordered">
-    <table class="table">
-    <thead>
-    <tr>
-
-      <th>Amount Per Serving</th>
-      <th>%Daily Value</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-       <td>Desciption</td>
-    </tr>
-    <tr>
-       <td>Protein</td>
-       <td>100g</td>
-    </tr>
-    <tr>
-       <td>Sugar</td>
-       <td>50g</td>
-    </tr>
-
-
-    </tbody>
-    </table> -->
-
     </div>
     </div>
     </div>
-
-
     <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
-
       <script type="text/javascript" src="../scripts/recipe.js">
     </script>
-
-
-
   </body>
   <footer>
-
 <p class="text-center text-muted">© Copyright 2016 foodplanner</p>
 </footer>
 </html>
