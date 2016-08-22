@@ -9,6 +9,17 @@ h1{
     background-color:transparent !important;
 }
 
+.panel-info {
+    border-color: #f9c690 !important;
+}
+.panel-info>.panel-heading {
+  background-image: linear-gradient(to bottom,#f7e3d9 0,#fbf3ee 100%)
+}
+.panel-info>.panel-heading {
+    color: #31708f;
+    background-color: #f7e3d9;
+    border-color: #f9c690 !important;
+}
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*signup*/
@@ -103,6 +114,12 @@ h1{
 
 /*-----------------------------------------------------------------------------------------------------*/
 
+/*after_signup*/
+
+.fav-margin{
+  margin-top:-15px;
+}
+/*-----------------------------------------------------------------------------------------------------*/
 
 /*meal_planner*/
 .border{border: 1px solid rgba(211,211,211, 0.8)}
