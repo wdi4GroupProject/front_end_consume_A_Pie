@@ -47,7 +47,7 @@ var date_array_formatted = [];
 for (var i=1; i<8; i++){
   date_array[i] = new Date(day_x.getFullYear(),day_x.getMonth(),day_x.getDate()+i-1);
   date_array_formatted[i] = getDayFormat(date_array[i]);
-  $('#day'+i+'_day').html(weekday[d.getDay(i)]);
+  $('#day'+i+'_day').html(weekday[date_array[i].getDay()]);
   $('#day'+i+'_date').html(date_array_formatted[i]);
 }
 
