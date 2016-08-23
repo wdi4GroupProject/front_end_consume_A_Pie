@@ -1,30 +1,183 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title> Meal Planner | Weekly </title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title> Meal Planner | Weekly </title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- group style sheet -->
-    <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
-  </head>
-  <body>
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <h1> this is the Weekly Page</h1>
+  <!-- group style sheet -->
+  <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
 
 
-    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  <nav class="navbar navbar">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/views/index.html">Food Planner</a>
+      </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav  pull-right">
 
-    <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
+          <li><a href="/views/meal_planner.html">Meal Planner</a></li>
+          <li><a href="/views/weekly.html">Recipe</a></li>
+          <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/views/profile.html">Profile</a></li>
+              <li><a href="/views/settings.html">Settings</a></li>
+              <li><a href="/views/index.html">Log out</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <input type="textarea" name="date" id="date_input" placeholder="YYYY-MM-DD"><button id="run_button">RUN</button>
+  <!-- content for weekly page -->
+  <div class="container">
+    <!-- first row -->
 
-      <script type="text/javascript" src="../scripts/weekly.js">
-    </script>
-  </body>
+    <div class="row" >
+      <div class="background-col-light">
+        <!--bkgrd-col-->
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-left day" id="day1_day">xx</h3>
+          <p id="day1_date">xx</p>
+        </div>
+
+        <!-- first row of images -->
+        <div class="row" id="day1_meal_container">
+            <!-- <div id="meal-image-holder" class="col-lg-3 col-md-3 col-xs-6 thumb thumbnail img-responsive">
+              <div class="hide">
+                input hidden message here
+              </div>
+
+                <div class="pull-right fav-margin">
+                  display text
+                </div>
+                <div id="test1"></div>
+            </div> -->
+          </div>
+
+
+
+      </div>
+    </div>
+    <!--bkgrd-col-->
+
+    <!-- new row of day -->
+    <div class="row" >
+      <div class="background-col-yellow">
+        <!--bkgrd-col-->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-left day" id="day2_day">xx</h3>
+          <p id="day2_date">xx</p>
+        </div>
+        <!-- first row of images -->
+        <div class="row" id="day2_meal_container">
+        </div>
+      </div>
+    </div>
+
+    <!-- new row of day -->
+    <div class="row" >
+      <div class="background-col-light">
+        <!--bkgrd-col-->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-left day" id="day3_day">xx</h3>
+          <p id="day3_date">xx</p>
+        </div>
+        <!-- first row of images -->
+        <div class="row" id="day3_meal_container">
+        </div>
+      </div>
+    </div>
+
+    <!-- new row of day -->
+    <div class="row" >
+      <div class="background-col-yellow">
+        <!--bkgrd-col-->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-left day" id="day4_day">xx</h3>
+          <p id="day4_date">xx</p>
+        </div>
+        <!-- first row of images -->
+        <div class="row" id="day4_meal_container">
+        </div>
+      </div>
+    </div>
+
+    <!-- new row of day -->
+    <div class="row" >
+      <div class="background-col-light">
+        <!--bkgrd-col-->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-left day" id="day5_day">xx</h3>
+          <p id="day5_date">xx</p>
+        </div>
+        <!-- first row of images -->
+        <div class="row" id="day5_meal_container">
+        </div>
+      </div>
+    </div>
+
+    <!-- new row of day -->
+    <div class="row" >
+      <div class="background-col-yellow">
+        <!--bkgrd-col-->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-left day" id="day6_day">xx</h3>
+          <p id="day6_date">xx</p>
+        </div>
+        <!-- first row of images -->
+        <div class="row" id="day6_meal_container">
+        </div>
+      </div>
+    </div>
+
+    <!-- new row of day -->
+    <div class="row" >
+      <div class="background-col-light">
+        <!--bkgrd-col-->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <h3 class="text-left day" id="day7_day">xx</h3>
+          <p id="day7_date">xx</p>
+        </div>
+        <!-- first row of images -->
+        <div class="row" id="day7_meal_container">
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+  <!-- content for weekly page -->
+
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="../scripts/weekly.js">
+  </script>
+</body>
+<footer><p class="text-center text-muted">© Copyright 2016 foodplanner</p>
+</footer>
 </html>

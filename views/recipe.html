@@ -6,25 +6,78 @@
     <title> Meal Planner | Recipe </title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
     <!-- group style sheet -->
     <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
   </head>
   <body>
+    <nav class="navbar navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/views/index.html">Food Planner</a>
+    </div>
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav  pull-right">
+      <li><a href="/views/meal_planner.html">Meal Planner</a></li>
+      <li><a href="/views/weekly.html">Recipe</a></li>
+      <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
+  <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/views/profile.html">Profile</a></li>
+          <li><a href="/views/settings.html">Settings</a></li>
+          <li><a href="/views/index.html">Log out</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+    <div class="container ">
+    <div class="row ">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <h2 id="recipe-title"></h2>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <div id="recipeimage"></div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 recipe-container-border p-2">
+      <h3>Ingredients</h3>
+      <div class="container">
+      <div class="row">
+        <div class="col-sm-5">
+          <!-- Setting img placeholder for ingredients with text -->
 
-    <h1> this is the Recipe Page</h1>
+          <div class="text-left"  id="ingredient-img">
+        </div>
 
+      </div>
+      </div>
+    </div>
 
+      <div id="intructions">
+      </div>
+      <div id="calories">
+        <h3 style="font-weight:bold">Calories:</h3>
+      </div>
+    </div>
+    </div>
+    </div>
     <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
     <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
-
       <script type="text/javascript" src="../scripts/recipe.js">
     </script>
   </body>
+  <footer>
+<p class="text-center text-muted">© Copyright 2016 foodplanner</p>
+</footer>
 </html>

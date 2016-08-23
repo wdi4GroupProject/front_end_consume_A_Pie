@@ -1,28 +1,210 @@
 /*general styles*/
 /*--------------------------------------------------------------------------------------------------------*/
 h1{
-  color: red;
 }
 
 /*login*/
+
+.jumbotron {
+    background-color:transparent !important;
+}
+
+.panel-info {
+    border-color: #f9c690 !important;
+}
+.panel-info>.panel-heading {
+  background-image: linear-gradient(to bottom,#f7e3d9 0,#fbf3ee 100%)
+}
+.panel-info>.panel-heading {
+    color: #31708f;
+    background-color: #f7e3d9;
+    border-color: #f9c690 !important;
+}
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*signup*/
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*index*/
+.container {
+    margin-top: 20px;
+}
+
+.icon-bar {
+  color: black;
+  border-color: black;
+  background-color: black;
+}
+/* Carousel Styles */
+.carousel-indicators .active {
+    background-color: #2980b9;
+}
+
+.carousel-inner img {
+    width: 100%;
+    max-height: 460px;
+    object-fit: fill;
+}
+
+.carousel-control {
+    width: 0;
+}
+
+
+/* Carousel Header Styles */
+.header-text {
+    position: absolute;
+    top: 20%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #fff;
+}
+
+.header-text h2 {
+    font-size: 40px;
+}
+
+.header-text h2 span {
+    background-color: #2980b9;
+	padding: 10px;
+}
+
+.header-text h3 span {
+	background-color: #000;
+	padding: 15px;
+}
+
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
+}
+
+.btn-theme {
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);;
+    border: 2px solid #fff;
+    margin-right: 15px;
+}
+
+.btn-theme:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+}
+.img-responsive {
+    margin: 0 auto;
+}
+
 /*-----------------------------------------------------------------------------------------------------*/
 
-/*after_login*/
+/*after_login_existing*/
+.banner-background{
+  height: 300px;
+  background-color: #F3E4D8;
+}
+.banner-background h1{
+  margin-top:80px;
+}
+.wrap {
+ 	position: relative;
+ 	margin: 3em 0;
+ }
+
+
 /*-----------------------------------------------------------------------------------------------------*/
 
+/*after_signup*/
+
+.fav-margin{
+  margin-top:-15px;
+}
+/*-----------------------------------------------------------------------------------------------------*/
 
 /*meal_planner*/
+.border{border: 1px solid rgba(211,211,211, 0.8)}
+.calander-temp{
+  width: 35px;
+  height: 25px;
+  background-color: lightgrey;
+  margin-top: 15px;
+}
 /*-----------------------------------------------------------------------------------------------------*/
 
 /*weekly*/
+.background-col-light{
+  background-color: #E6F0F0;
+  padding: 0px 0 30px 30px;
+  height:auto;
+}
+.background-col-yellow{
+  background-color: #F9C680;
+  padding: 0px 0 30px 30px;
+  height:auto;
+
+}
+.day{
+text-decoration: underline;
+}
+
+
+.img-thumbnail{
+  overflow:hidden;
+  object-fit: contain;
+  padding-right:10px;
+  padding-left:10px;
+}
+.meal-img-margin-top{
+  margin-top: 10px;
+}
+.meal-img-margin-top img{
+  max-width: 150px !important;
+  max-height: 150px !important;
+  border: 0 none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.meal-img-margin-top img{
+display:inline-block;
+}
+.row li {
+  width: 33.3%;
+  float: left;
+  list-style: none;
+}
+.row {
+     margin-right: 0px;
+    margin-left: 0px;
+}
 /*-----------------------------------------------------------------------------------------------------*/
 
 
 /*recipe*/
+.recipe-container-border{
+  border: 1px solid rgba(211,211,211, 0.8);
+
+}
+
+/*Setting the ingredient image size*/
+.ingredient-img{
+  width: 50px;
+  height: 50px;
+border-radius: 50%;
+  background-color: lightgrey;
+}
+
+/*remove border for the indgredien thumbnail*/
+.img-thumbnail{
+  border:none;
+}
+
+#calories{
+  font-weight: bold;
+}
 /*-----------------------------------------------------------------------------------------------------*/
+
+
+footer{
+
+  margin-top: 20px;
+}
