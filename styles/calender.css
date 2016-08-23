@@ -24,27 +24,29 @@
 	height: 100%;
 	margin: 0 1px 0 0;
 	padding: 0;
-	background: #333;
+	background: rgba(39, 46, 72, 1);
 	color: #ddd;
 	text-align: center;
 	cursor: pointer;
 }
 .frame ul li.active {
 	color: #fff;
-	background: #a03232;
+	background: rgba(211, 83, 72, 1);
 }
 
 /* day, date and recipe divs in calendar (per day) */
 .dayDiv {
 	padding-top: 5px;
 	height: 15%;
-	font-size: 22px;
+	font-size: 20px;
+  font-family: 'Lato', sans-serif;
 	text-transform: uppercase;
 }
 .dateDiv {
 	padding-bottom: 10px;
 	height: 10%;
-	font-size: 16px;
+	font-size: 14px;
+  font-family: 'Lato', sans-serif;
 	border-bottom: 1px solid white;
 }
 
@@ -57,13 +59,14 @@
 .scrollbar {
 	margin: 0 0 1em 0;
 	height: 2px;
-	background: #ccc;
+	background: #F9C680;
 	line-height: 0;
 }
 .scrollbar .handle {
 	width: 100px;
 	height: 100%;
-	background: #292a33;
+	background: #272E48
+;
 	cursor: pointer;
 }
 .scrollbar .handle .mousearea {
