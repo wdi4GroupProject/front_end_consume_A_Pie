@@ -48,9 +48,6 @@ height: 10px;
   background-color: rgba(174, 189, 199, 1) !important;
   height: 10px;
 }
-.color-palette{
-    top: 50px;
-}
 .container-fluid,.container{
   padding-left: 0 !important;
   padding-right: 0 !important;
@@ -76,19 +73,20 @@ font-size: normal;
 .navbar{
   margin-bottom: 10px !important;
   background-color: white;
-  padding-bottom: 10px;
 }
-
- .nav > li > a:hover,.nav > li > a:active,.nav.open{
+.navbar-fixed-top {
+  border-width: 0 0 0px;
+}
+ .nav > li > a:hover,.nav > li > a:active,.nav.open,.nav .open>a,.nav li.dropdown.open > .dropdown-toggle,.navbar .nav li.dropdown.active > .dropdown-toggle{
     background-color:rgba(249, 198, 128, 0.5);
     font-size: 25px;
     font-family: 'Lobster Two', cursive;
 }
 
-.dropdown-menu>li>a:hover {
-  background-color:rgba(249, 198, 128, 0.5);
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{  /*background-color:rgba(249, 198, 128, 0.5)!important;*/
   font-size: 20px;
   font-family: 'Lobster Two', cursive;
+  background-image:none !important;
 }
 
 
@@ -123,6 +121,10 @@ font-size: normal;
 .hvr-underline-from-center:hover:before, .hvr-underline-from-center:focus:before, .hvr-underline-from-center:active:before {
     left: 0;
     right: 0;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
 }
 /*--------------------------------------------------------------------------------------------------------*/
 /*login*/
