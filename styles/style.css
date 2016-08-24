@@ -209,6 +209,9 @@ font-size: normal;
 }
 .img-responsive {
     margin: 0 auto;
+    height: 500px;
+    width:300px;
+    overflow-x: auto;
 }
 
 /*-----------------------------------------------------------------------------------------------------*/

@@ -1,246 +1,234 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title> Meal Planner | After Login </title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title> Meal Planner | After Login </title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- group style sheet -->
+    <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="../styles/calender.css" media="screen" title="no title" charset="utf-8">
 
-  <!-- group style sheet -->
-  <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="../styles/calender.css" media="screen" title="no title" charset="utf-8">
-  <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
-</head>
+  </head>
 
+  <nav class="navbar navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="container">
 
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand lobster-font" href="/views/index.html">Food Planner</a>
+        </div>
 
-<nav class="navbar navbar navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav pull-right">
 
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand lobster-font" href="/views/index.html">Food Planner</a>
+            <li><a class="hvr-underline-from-center" href="/views/meal_planner.html">Meal Planner</a></li>
+            <li><a class="hvr-underline-from-center"href="/views/weekly.html">Recipe</a></li>
+            <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
+            <li><a class="hvr-underline-from-center"href="/views/login.html">Log in</a></li>
+            <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
+           <ul class="dropdown-menu">
+             <!-- <li><a href="/views/profile.html">Profile</a></li>
+             <li><a href="/views/settings.html">Settings</a></li> -->
+             <li><a href="/views/index.html">Log out</a></li>
+         </ul>
+        </li>
+          </ul>
+        </div>
       </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav pull-right">
+    </div>
+    <div class="container-fluid color-palette">
+      <div class="backgrd-col-red1"></div>
+      <div class="backgrd-col-orange1"></div>
+    </div>
+  </nav>
+  <body>
 
-          <li><a class="hvr-underline-from-center" href="/views/meal_planner.html">Meal Planner</a></li>
-          <li><a class="hvr-underline-from-center"href="/views/weekly.html">Recipe</a></li>
-          <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
-          <li><a class="hvr-underline-from-center"href="/views/login.html">Log in</a></li>
-          <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
-         <ul class="dropdown-menu">
-           <!-- <li><a href="/views/profile.html">Profile</a></li>
-           <li><a href="/views/settings.html">Settings</a></li> -->
-           <li><a href="/views/index.html">Log out</a></li>
-       </ul>
-      </li>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 banner-background">
+      <div class="col-lg-6 col-md-6 col-sm-6 text-center" >
+        <h1>Welcome</h1>
+        <h3 id="username">User name</h3>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<!-- calender -->
+<div class="wrap">
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+
+      <div class="scrollbar">
+        <div class="handle" style="-webkit-transform: translateZ(0px) translateX(67px); width: 168px;">
+          <div class="mousearea"></div>
+        </div>
+      </div>
+
+      <div class="frame" id="horizontalCal" style="overflow: hidden;">
+        <ul class="clearfix calendar" style="-webkit-transform: translateZ(0px) translateX(0px); width: 6840px;">
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_0"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_1"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_2"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_3"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_4"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_5"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_6"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_7"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_8"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_9"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_10"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_11"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_12"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_13"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_14"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_15"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_16"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_17"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_18"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_19"></div>
+          </li>
+          <li>
+            <div class="dayDiv"></div>
+            <div class="dateDiv"></div>
+            <div class="recipeDiv" id="cal_meal_20"></div>
+          </li>
+
         </ul>
-      </div>
-    </div>
 
-  </div>
-</nav>
-
-
-
-
-<body>
-  <div class="container-fluid color-palette">
-    <div class="backgrd-col-red1"></div>
-    <div class="backgrd-col-orange1"></div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 banner-background">
-        <div class="col-lg-6 col-md-6 col-sm-6 text-center">
-          <h1 class="lobster-font">Welcome</h1>
-          <h3 id="username">User name</h3>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="controls center background-hover">
+          <button class="btn glyphicon glyphicon-menu-left horPrev"></button>
+          <button class="btn glyphicon glyphicon-menu-right horNext"></button>
 
         </div>
       </div>
 
+
     </div>
+
 
   </div>
 
-  <!-- calender -->
-  <div class="container">
+</div>
 
-    <div class="wrap">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+<!-- end of calender -->
 
-          <div class="scrollbar">
-            <div class="handle" style="-webkit-transform: translateZ(0px) translateX(67px); width: 168px;">
-              <div class="mousearea"></div>
-            </div>
-          </div>
-
-          <div class="frame" id="horizontalCal" style="overflow: hidden;">
-            <ul class="clearfix calendar" style="-webkit-transform: translateZ(0px) translateX(0px); width: 6840px;">
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv opensans-font"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv opensans-font"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-              <li>
-                <div class="dayDiv opensans-font"></div>
-                <div class="dateDiv opensans-font"></div>
-                <div class="recipeDiv"></div>
-              </li>
-
-            </ul>
-
-            <div class="controls center background-hover">
-              <button class="btn glyphicon glyphicon-menu-left horPrev"></button>
-              <button class="btn glyphicon glyphicon-menu-right horNext"></button>
-
-            </div>
-          </div>
-
-
-        </div>
-
-
-      </div>
-
-    </div>
-  </div>
-
-
-
-
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-
+<div class="container">
+<div class="row">
+  <div class="col-lg-12">
         <h1 class="page-header text-center">Meals of the day</h1>
-      </div>
+  </div>
+  <div class="col-lg-8 col-lg-offset-2 text-center">
+        <button id="reload">Show highlighted day</button>
+  </div>
+</div>
 
-    </div>
-
-    <div class="row">
-      <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-sm-12">
-        <h2 id="current-day">Friday</h2>
-        <h4 id="current-date">26th Aug</h3>
+  <div class="row">
+    <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-sm-12">
+      <h2 id="display-day">Day</h2>
+      <h4 id="display-date">Date</h3>
     </div>
   </div>
 
 
-        <div class="row">
-
-
+        <div class="row" id="display_day_body">
 
             <div class="col-lg-4 col-md-4 col-xs-6 thumb">
                 <a class="thumbnail" href="#">
@@ -311,14 +299,12 @@
     <script src="http://darsa.in/sly/js/sly.min.js"></script>
 
     <!-- Moment calendar/date plugin -->
-    <script src="../scripts/calendar/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
-
     </script>
       <script type="text/javascript" src="../scripts/after_login_existing.js">
     </script>
   </body>
-  <footer class="container-fluid">
+  <footer>
 <p class="text-center text-muted">© Copyright 2016 foodplanner</p>
 </footer>
 </html>

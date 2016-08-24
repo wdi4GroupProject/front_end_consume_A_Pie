@@ -132,7 +132,7 @@ $(document).ready(function() {
           $('#display_day_body').append(meal_container);
 
           for (var l = 0; l < target_meals[k].recipes.length; l++) {
-            var recipe_container = '<div class="col-lg-4 col-md-4 col-xs-6 thumb" id="' + target_meals[k].recipes[l]._id + '"><a class="thumbnail" href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><img style="width:300px; height: 300px; overflow: auto; object-fit:cover;"class="img-responsive" src=' + target_meals[k].recipes[l].image_url + '></a></div>';
+            var recipe_container = '<div class="col-lg-4 col-md-4 col-xs-6 thumb" id="' + target_meals[k].recipes[l]._id + '"><a class="thumbnail" href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><img "img-responsive" src=' + target_meals[k].recipes[l].image_url + '></a></div>';
             $('#' + target_meals[k]._id).append(recipe_container);
           }
         }
