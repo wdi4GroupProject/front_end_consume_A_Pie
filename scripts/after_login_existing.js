@@ -126,7 +126,7 @@ $(document).ready(function() {
       } else {
 
         for (var k = 0; k < target_meals.length; k++) {
-          var meal_container = '<div id="' + target_meals[k]._id + '" class="row"></div>';
+          var meal_container = '<div id="' + target_meals[k]._id + '" class="row" style="border-bottom-style: double"></div>';
           console.log(meal_container);
 
           $('#display_day_body').append(meal_container);
