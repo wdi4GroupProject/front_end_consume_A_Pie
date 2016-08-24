@@ -56,13 +56,11 @@
         <h3 id="username">User name</h3>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6">
-
       </div>
     </div>
-
   </div>
-
 </div>
+
 <div class="container">
 
 <div class="wrap">
@@ -80,107 +78,107 @@
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_0"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_1"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_2"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_3"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_4"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_5"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_6"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_7"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_8"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_9"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_10"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_11"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_12"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_13"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_14"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_15"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_16"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_17"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_18"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_19"></div>
           </li>
           <li>
             <div class="dayDiv"></div>
             <div class="dateDiv"></div>
-            <div class="recipeDiv"></div>
+            <div class="recipeDiv" id="cal_meal_20"></div>
           </li>
 
         </ul>
@@ -205,23 +203,22 @@
 <div class="container">
 <div class="row">
   <div class="col-lg-12">
-
         <h1 class="page-header text-center">Meals of the day</h1>
-    </div>
-
+  </div>
+  <div class="col-lg-8 col-lg-offset-2 text-center">
+        <button id="reload">Show highlighted day</button>
+  </div>
 </div>
 
   <div class="row">
     <div class="col-lg-11 col-lg-offset-1 col-md-11 col-md-offset-1 col-sm-12">
-      <h2 id="current-day">Friday</h2>
-      <h4 id="current-date">26th Aug</h3>
+      <h2 id="display-day">Day</h2>
+      <h4 id="display-date">Date</h3>
     </div>
   </div>
 
 
-        <div class="row">
-
-
+        <div class="row" id="display_day_body">
 
             <div class="col-lg-4 col-md-4 col-xs-6 thumb">
                 <a class="thumbnail" href="#">
@@ -292,7 +289,6 @@
     <script src="http://darsa.in/sly/js/sly.min.js"></script>
 
     <!-- Moment calendar/date plugin -->
-    <script src="../scripts/calendar/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
 
     </script>
