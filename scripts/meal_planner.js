@@ -105,6 +105,8 @@ $('.verticalMeals').on('click', 'div.mealCont', function() {
 // selected recipes in meal - popup on click
 $('.verticalMeals').on('click', 'img', function() {
   var selectedImg = $(this).attr('src');
+  $('.selectedRecipeInMeal').removeClass('selectedRecipeInMeal');
+  $(this).addClass('selectedRecipeInMeal');
   $('#dialog').html( '<img src="'+ selectedImg + '" width="300" height="300"><br><p>' + recipes[0].title + '</p>' );
   $('#dialog').dialog("open");
 });
@@ -114,20 +116,22 @@ $("#dialog").dialog({
   modal: true,
   draggable: true,
   closeOnEscape: true,
-  show: {
-      effect: "blind",
-      duration: 1000
-  },
-  hide: {
-      effect: "drop",
-      duration: 1000
-    },
+  // show: {
+  //     effect: "drop",
+  //     duration: 1000
+  // },
+  // hide: {
+  //     effect: "drop",
+  //     duration: 1000
+  //   },
     closeText: null,
     title: 'recipe',
     buttons: [
       {
+        id:"btn-delete",
         text: "Delete",
         click: function() {
+          $('.selectedRecipeInMeal').remove();
           $(this).dialog( "close" );
         }
       },
@@ -139,9 +143,6 @@ $("#dialog").dialog({
       }
     ]
   });
-
-
-
 
 
 });
