@@ -18,70 +18,88 @@
   <link rel="stylesheet" href="../styles/calender.css" media="screen" title="no title" charset="utf-8">
   <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
 
-  <body>
+</head>
 
-    <nav class="navbar navbar container">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand lobster-font" href="/views/index.html">Food Planner</a>
-        </div>
+<nav class="navbar navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="container">
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav pull-right">
-
-            <li><a href="/views/meal_planner.html">Meal Planner</a></li>
-            <li><a href="/views/weekly.html">Recipe</a></li>
-            <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
-            <li><a href="/views/login.html">Log in</a></li>
-
-          </ul>
-        </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand lobster-font" href="/views/index.html">Food Planner</a>
       </div>
-    </nav>
 
-    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav pull-right">
 
-      <div class="container-fluid no-padding">
-        <div class="row">
-          <!-- Carousel -->
-          <div id="carousel-example-generic" class="carousel slide">
+          <li><a class="hvr-underline-from-center" href="/views/meal_planner.html">Meal Planner</a></li>
+          <li><a class="hvr-underline-from-center"href="/views/weekly.html">Recipe</a></li>
+          <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
+          <li><a class="hvr-underline-from-center"href="/views/login.html">Log in</a></li>
+          <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
+         <ul class="dropdown-menu">
+           <!-- <li><a href="/views/profile.html">Profile</a></li>
+           <li><a href="/views/settings.html">Settings</a></li> -->
+           <li><a href="/views/index.html">Log out</a></li>
+       </ul>
+      </li>
+        </ul>
+      </div>
+    </div>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-              <div class="item active">
-                <img src="/img/tabletop.jpg" alt="First slide">
-                <!-- Static Header -->
-                <div class="header-text hidden-xs">
-                  <div class="col-md-12 text-center">
-                    <h2>
+  </div>
+</nav>
+
+
+<body>
+
+  <div class="container-fluid color-palette">
+    <div class="backgrd-col-red1"></div>
+    <div class="backgrd-col-orange1"></div>
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="container-fluid no-padding">
+      <div class="row">
+        <!-- Carousel -->
+        <div id="carousel-example-generic" class="carousel slide">
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="/img/tabletop.jpg" alt="First slide">
+              <!-- Static Header -->
+              <div class="header-text hidden-xs">
+                <div class="col-md-12 text-center">
+                  <h2>
                             <span>Welcome</span>
                           </h2>
-                    <br>
-                    <h3>
+                  <br>
+                  <h3>
                             <span>to Food Planner</span>
                           </h3>
-                    <br>
-                    <div class="">
-                      <a class="btn btn-theme btn-sm btn-min-block" href="/views/login.html">Login</a>
-                      <a class="btn btn-theme btn-sm btn-min-block" href="/views/signup.html">Register</a></div>
-                  </div>
+                  <br>
+                  <div class="">
+                    <a class="btn btn-theme btn-sm btn-min-block" href="/views/login.html">Login</a>
+                    <a class="btn btn-theme btn-sm btn-min-block" href="/views/signup.html">Register</a></div>
                 </div>
-                <!-- /header-text -->
               </div>
-
+              <!-- /header-text -->
             </div>
-            <!-- /header-text -->
-          </div>
-        </div>
 
+          </div>
+          <!-- /header-text -->
+        </div>
       </div>
-      <!-- /carousel -->
+
+    </div>
+    <!-- /carousel -->
 
 
 
@@ -236,36 +254,36 @@
         </div>
       </div>
     </div>
-    </div>
   </div>
-</div>
-</div>
+  </div>
+  </div>
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
 
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 
-    <!-- Sly scrolling plugin -->
-    <script src="http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
-    <script src="http://darsa.in/sly/js/sly.min.js"></script>
+  <!-- Sly scrolling plugin -->
+  <script src="http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
+  <script src="http://darsa.in/sly/js/sly.min.js"></script>
 
-    <!-- Moment calendar/date plugin -->
-    <script src="../scripts/calendar/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
-    </script>
-    <script type="text/javascript" src="../scripts/index.js">
-    </script>
-  </body>
-  <footer class="container-fluid">
+  <!-- Moment calendar/date plugin -->
+  <script src="../scripts/calendar/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
+  </script>
+  <script type="text/javascript" src="../scripts/index.js">
+  </script>
+</body>
+<footer class="container-fluid">
   <p class="text-center text-muted">© Copyright 2016 foodplanner</p>
-  </footer>
+</footer>
 
 </html>

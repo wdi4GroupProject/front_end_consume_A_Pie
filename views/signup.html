@@ -17,10 +17,12 @@
   <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
 </head>
 
-<body>
 
-  <nav class="navbar navbar container">
-    <div class="container-fluid">
+
+<nav class="navbar navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="container">
+
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -32,21 +34,38 @@
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav  pull-right">
+        <ul class="nav navbar-nav pull-right">
 
-
-          <li><a href="/views/weekly.html">Recipe</a></li>
+          <li><a class="hvr-underline-from-center" href="/views/meal_planner.html">Meal Planner</a></li>
+          <li><a class="hvr-underline-from-center"href="/views/weekly.html">Recipe</a></li>
           <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
-
+          <li><a class="hvr-underline-from-center"href="/views/login.html">Log in</a></li>
+          <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
+         <ul class="dropdown-menu">
+           <!-- <li><a href="/views/profile.html">Profile</a></li>
+           <li><a href="/views/settings.html">Settings</a></li> -->
+           <li><a href="/views/index.html">Log out</a></li>
+       </ul>
+      </li>
         </ul>
       </div>
     </div>
-  </nav>
 
-  <div class="container">
+  </div>
+</nav>
+
+
+
+  <body>
+    <div class="container-fluid color-palette">
+      <div class="backgrd-col-red1"></div>
+      <div class="backgrd-col-orange1"></div>
+    </div>
+
+  <div class="container-fluid backgrd-col-peach">
     <div class="row">
       <div class="jumbotron">
-        <h1 class="text-center">Welcome to Sign up page</h1>
+        <h1 class="text-center raleway-font">Welcome to Sign up page</h1>
 
         <div class="container">
           <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
