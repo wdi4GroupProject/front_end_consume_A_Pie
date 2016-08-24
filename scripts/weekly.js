@@ -21,7 +21,25 @@ $(function() {
       console.log(textStatus);
       window.location='login.html';
     });
-    
+
+    $("#logout").on('click',function(){
+      var token = sessionStorage.getItem('token');
+      $.ajax({
+        url: "https://team5-backend.herokuapp.com/API/logout",
+        type: 'GET',
+        beforeSend: function(xhr) {   
+          xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+        }
+      }).done(function(data) {
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+        window.location = 'index.html';
+    })
+    .fail(function(request, textStatus, errorThrown) {
+      alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+    });
+  });
+
 $('#run_button').on('click',function(e){
 var $userId       = $('#userid');
 var $dayDate      = $('#daydate');
@@ -78,7 +96,7 @@ for (var i=1; i<8; i++){
 // AJAX call to retrieve meals for date
 
 // Create meals for date
-var userID = "57badab5fee98669d2a81e1d";
+// var user = "57badab5fee98669d2a81e1d";
 // Fill meal with recipe title & pictures
 
 // to refactor to single ajax call followed by population of data
@@ -88,9 +106,12 @@ var userID = "57badab5fee98669d2a81e1d";
       data: {
         start   : date_array_formatted[1],
         end     : date_array_formatted[1],
-        user_id : userID
+        user_id : user
       },
       datatype: 'json',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+      }
        }).done(function(data) {
        //scan through meals database
        $('#day'+1+'_meal_container').html('');
@@ -115,9 +136,12 @@ var userID = "57badab5fee98669d2a81e1d";
        data: {
          start   : date_array_formatted[2],
          end     : date_array_formatted[2],
-         user_id : userID
+         user_id : user
        },
        datatype: 'json',
+       beforeSend: function(xhr) {   
+         xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+       }
         }).done(function(data) {
         //scan through meals database
         $('#day'+2+'_meal_container').html('');
@@ -142,9 +166,12 @@ var userID = "57badab5fee98669d2a81e1d";
         data: {
           start   : date_array_formatted[3],
           end     : date_array_formatted[3],
-          user_id : userID
+          user_id : user
         },
         datatype: 'json',
+        beforeSend: function(xhr) {   
+          xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+        }
          }).done(function(data) {
          //scan through meals database
          $('#day'+3+'_meal_container').html('');
@@ -169,9 +196,12 @@ var userID = "57badab5fee98669d2a81e1d";
          data: {
            start   : date_array_formatted[4],
            end     : date_array_formatted[4],
-           user_id : userID
+           user_id : user
          },
          datatype: 'json',
+         beforeSend: function(xhr) {   
+           xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+         }
           }).done(function(data) {
           //scan through meals database
           $('#day'+4+'_meal_container').html('');
@@ -196,9 +226,12 @@ var userID = "57badab5fee98669d2a81e1d";
           data: {
             start   : date_array_formatted[5],
             end     : date_array_formatted[5],
-            user_id : userID
+            user_id : user
           },
           datatype: 'json',
+          beforeSend: function(xhr) {   
+            xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+          }
            }).done(function(data) {
            //scan through meals database
            $('#day'+5+'_meal_container').html('');
@@ -223,9 +256,12 @@ var userID = "57badab5fee98669d2a81e1d";
            data: {
              start   : date_array_formatted[6],
              end     : date_array_formatted[6],
-             user_id : userID
+             user_id : user
            },
            datatype: 'json',
+           beforeSend: function(xhr) {   
+             xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+           }
             }).done(function(data) {
             //scan through meals database
             $('#day'+6+'_meal_container').html('');
@@ -250,9 +286,12 @@ var userID = "57badab5fee98669d2a81e1d";
             data: {
               start   : date_array_formatted[7],
               end     : date_array_formatted[7],
-              user_id : userID
+              user_id : user
             },
             datatype: 'json',
+            beforeSend: function(xhr) {   
+              xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+            }
              }).done(function(data) {
              //scan through meals database
              $('#day'+7+'_meal_container').html('');
