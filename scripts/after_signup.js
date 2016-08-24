@@ -1,44 +1,5 @@
 // Calendar function
 $(document).ready(function() {
-  //user authentication
-  var user = sessionStorage.getItem('user'),
-  token = sessionStorage.getItem('token');
-  $.ajax({
-      url: "https://team5-backend.herokuapp.com/API/authentication",
-      data: {
-        "user": user,
-      },
-      type: 'POST',
-      dataType: 'json',
-      beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-      }
-    }).done(function(data) {
-      console.log(data);
-    })
-    .fail(function(request, textStatus, errorThrown) {
-      console.log(textStatus);
-      window.location='login.html';
-    });
-
-//logout
-  $("#logout").on('click',function(){
-    var token = sessionStorage.getItem('token');
-    $.ajax({
-      url: "https://team5-backend.herokuapp.com/API/logout",
-      type: 'GET',
-      beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-      }
-    }).done(function(data) {
-      sessionStorage.removeItem('user');
-      sessionStorage.removeItem('token');
-      window.location = 'index.html';
-  })
-  .fail(function(request, textStatus, errorThrown) {
-    alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
-  });
-});
 
   (function() {
     var $frame = $('#horizontalCal');
@@ -165,13 +126,13 @@ $(document).ready(function() {
       } else {
 
         for (var k = 0; k < target_meals.length; k++) {
-          var meal_container = '<div id="' + target_meals[k]._id + '" class="row" style="border-bottom-style: double"></div>';
+          var meal_container = '<div id="' + target_meals[k]._id + '" class="row"></div>';
           console.log(meal_container);
 
           $('#display_day_body').append(meal_container);
 
           for (var l = 0; l < target_meals[k].recipes.length; l++) {
-            var recipe_container = '<div class="col-lg-4 col-md-4 col-xs-6 thumb" id="' + target_meals[k].recipes[l]._id + '"><a class="thumbnail" href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><img style="width:300px; height: 300px; overflow: auto; object-fit:cover;"class="img-responsive" src=' + target_meals[k].recipes[l].image_url + '></a></div>';
+            var recipe_container = '<div class="col-lg-4 col-md-4 col-xs-6 thumb" id="' + target_meals[k].recipes[l]._id + '"><a class="thumbnail" href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><img "img-responsive" src=' + target_meals[k].recipes[l].image_url + '></a></div>';
             $('#' + target_meals[k]._id).append(recipe_container);
           }
         }
