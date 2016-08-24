@@ -66,9 +66,9 @@ var verDay  = $('div.verDayDisplay');
 // user meals display, click to add new meal div
  var count = 4;
  $('.addMeal').click(function() {
-  $("<div />", { "class":"mealCont", "id":"meal" + count })
-    .html( '<h3 class="mealNumDisplay">meal ' + count + '</h3> <div />' )
-    .insertBefore( $('.addMeal') );
+   $("<div />", { "class":"mealCont", "id":"meal" + count })
+    .html( '<a class="deleteMeal"></a><h3 class="mealNumDisplay">meal ' + count + '</h3> <div />' )
+    .insertBefore( $('.addMeal'));
   count++;
 });
 
@@ -142,6 +142,13 @@ $("#dialog").dialog({
         }
       }
     ]
+  });
+
+  // delete meals
+  $('.verticalMeals').on('click', '.deleteMeal', function() {
+    if(confirm("Are you sure you want to delete this meal?")) {
+    $(this).parent().remove();
+  } else { return false; }
   });
 
 

@@ -1,99 +1,111 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title> Meal Planner | Meal Planner </title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title> Meal Planner | Meal Planner </title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- group style sheet -->
-    <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <!-- jquiry ui link for popup -->
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
-  </head>
-  <body>
+  <!-- group style sheet -->
+  <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
 
-    <h1> this is the Meal Planner Page</h1>
+  <!-- jquiry ui link for popup -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+</head>
 
-    <div class="leftPanel col-md-3">
+<body>
 
-        <div class="verticalCal">
-            <div class="verDayDisplay"></div>
-            <div class="verDateDisplay"></div>
+  <h1> this is the Meal Planner Page</h1>
 
-            <div class="verControls">
-                <button class="btn verPrev"> < </button>
-                <button class="btn verNext"> > </button>
-            </div>
+  <div class="leftPanel col-md-3">
 
-        </div>
+    <div class="verticalCal">
+      <div class="verDayDisplay"></div>
+      <div class="verDateDisplay"></div>
 
-        <div class="verticalMeals">
-            <div class="mealCont" id="meal1">
-              <h3 class="mealNumDisplay">meal 1</h3>
-            </div>
-            <div class="mealCont" id="meal2">
-              <h3 class="mealNumDisplay">meal 2</h3>
-            </div>
-            <div class="mealCont" id="meal3">
-              <h3 class="mealNumDisplay">meal 3</h3>
-            </div>
-            <div class="addMeal">
-              <h3 class="mealNumDisplay">add meal <br> <b>+</b> </h3>
-            </div>
-        </div>
+      <div class="verControls">
+        <button class="btn verPrev">
+          < </button>
+            <button class="btn verNext"> > </button>
+      </div>
 
     </div>
 
-    <!-- popup box div  -->
-    <div id="dialog"></div>
+    <div class="verticalMeals">
 
-    <div class="rightPanel col-md-6">
+      <div class="mealCont" id="meal1">
+        <a class="deleteMeal"></a>
+        <h3 class="mealNumDisplay">meal 1</h3>
+      </div>
+
+      <div class="mealCont" id="meal2">
+        <a class="deleteMeal"></a>
+        <h3 class="mealNumDisplay">meal 2</h3>
+      </div>
+
+      <div class="mealCont" id="meal3">
+        <a class="deleteMeal"></a>
+        <h3 class="mealNumDisplay">meal 3</h3>
+      </div>
+
+      <div class="addMeal">
+        <h3 class="mealNumDisplay">add meal <br> <b>+</b> </h3>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- popup box div  -->
+  <div id="dialog"></div>
+
+  <div class="rightPanel col-md-6">
 
     <div class="box">
       <img src="" alt="placeholder" id="test1">
-        <div class="overbox">
-          <div class="title overtext"> Recipe </div>
-          <div class="tagline overtext"> Dish Name  </div>
-        </div>
+      <div class="overbox">
+        <div class="title overtext"> Recipe </div>
+        <div class="tagline overtext"> Dish Name </div>
+      </div>
     </div>
     <div class="box">
       <img src="" alt="placeholder" id="test2">
-        <div class="overbox">
-          <div class="title overtext"> Recipe </div>
-          <div class="tagline overtext"> Dish Name  </div>
-        </div>
+      <div class="overbox">
+        <div class="title overtext"> Recipe </div>
+        <div class="tagline overtext"> Dish Name </div>
+      </div>
     </div>
     <div class="box">
       <img src="" alt="placeholder" id="test3">
-        <div class="overbox">
-          <div class="title overtext"> Recipe </div>
-          <div class="tagline overtext"> Dish Name </div>
-        </div>
+      <div class="overbox">
+        <div class="title overtext"> Recipe </div>
+        <div class="tagline overtext"> Dish Name </div>
+      </div>
     </div>
 
-    </div>
+  </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 
-    <!-- Sly scrolling plugin -->
-    <script src="http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
-    <script src="http://darsa.in/sly/js/sly.min.js"></script>
+  <!-- Sly scrolling plugin -->
+  <script src="http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
+  <script src="http://darsa.in/sly/js/sly.min.js"></script>
 
-    <!-- Moment calendar/date plugin -->
-    <script src="../scripts/calendar/moment.min.js"></script>
+  <!-- Moment calendar/date plugin -->
+  <script src="../scripts/calendar/moment.min.js"></script>
 
-      <script type="text/javascript" src="../scripts/meal_planner.js">
-    </script>
-  </body>
+  <script type="text/javascript" src="../scripts/meal_planner.js">
+  </script>
+</body>
+
 </html>
