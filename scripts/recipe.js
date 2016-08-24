@@ -55,6 +55,10 @@ console.log(URL);
       type: 'GET',
 
       dataType: 'json',
+      beforeSend: function(xhr) {
+       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+     }
+
      }).done(function(data) {
       $recipeImage.html(
       $("<img src=\"" + data.image_url + "\">"));

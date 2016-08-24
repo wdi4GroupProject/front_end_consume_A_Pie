@@ -47,11 +47,15 @@ $.ajax({
   type: 'GET',
 
   dataType: 'json',
- }).done(function(data) {
+  beforeSend: function(xhr) {
+       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+     }
+ })
+ .done(function(data) {
    for (var i = 0; i < data.length; i++) {
      console.log(data[i]);
      $recipeImage.append(
-       $('<a href=/views/recipe.html?recipe_id=' + data[i]._id + '><img src='+ data[i].image_url +'></a>')
+       $('<a href=/views/recipe.html?recipe_id=' + data[i]._id + '><img style="height: 200px; width: 200px;" src='+ data[i].image_url +'></a>')
      );
    }
 

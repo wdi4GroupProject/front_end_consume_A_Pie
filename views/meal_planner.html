@@ -1,65 +1,108 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title> Meal Planner | Meal Planner </title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title> Meal Planner | Meal Planner </title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- group style sheet -->
-    <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
-  </head>
-  <body>
+  <!-- group style sheet -->
+  <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
 
-    <nav class="navbar navbar container">
-    <div class="container-fluid">
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand lobster-font" href="/views/index.html">Food Planner</a>
+  <!-- font awesome -->
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+  <!-- jquery ui link for popup -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+</head>
+
+<body>
+
+  <h1> this is the Meal Planner Page</h1>
+
+  <div class="leftPanel col-md-3">
+
+    <div class="verticalCal">
+      <div class="verDayDisplay" id="day_display"></div>
+      <div class="verDateDisplay" id="date_display"></div>
+
+      <div class="verControls">
+        <button class="btn verPrev">
+          < </button>
+            <button class="btn verNext"> > </button>
+      </div>
+
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav  pull-right">
+    <div class="verticalMeals" id="display_day_body">
 
-      <li><a href="/views/meal_planner.html">Meal Planner</a></li>
-      <li><a href="/views/weekly.html">Recipe</a></li>
-      <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
-    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="/views/profile.html">Profile</a></li>
-          <li><a href="/views/settings.html">Settings</a></li>
-          <li><a href="/views/index.html">Log out</a></li>
-        </ul>
-      </li>
-    </ul>
+      <div class="mealCont" id="meal1">
+        <a class="deleteMeal"></a>
+        <h3 class="mealNumDisplay">meal 1</h3>
+      </div>
+
+      <div class="mealCont" id="meal2">
+        <a class="deleteMeal"></a>
+        <h3 class="mealNumDisplay">meal 2</h3>
+      </div>
+
+      <div class="mealCont" id="meal3">
+        <a class="deleteMeal"></a>
+        <h3 class="mealNumDisplay">meal 3</h3>
+      </div>
+
+      <div class="addMeal">
+        <h3 class="mealNumDisplay">add meal <br> <b>+</b> </h3>
+      </div>
+
     </div>
+
+  </div>
+
+  <!-- popup box div  -->
+
+  <div id="dialog"></div>
+
+
+  <div class="rightPanel col-md-6 ">
+    <div id="recipePicturesPlanner"></div>
+
+    <div class="hoverContainer">
+      <div class="hovereffect">
+        <img class="img-responsive" src="http://placehold.it/350x250" alt="">
+        <div class="overlay">
+          <h2>Effect 12</h2>
+          <p>
+            <i class="icon-external-link"></i>
+            <i class="icon-heart"></i>
+          </p>
+        </div>
+      </div>
     </div>
-    </nav>
 
+  </div>
 
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Sly scrolling plugin -->
+  <script src="http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
+  <script src="http://darsa.in/sly/js/sly.min.js"></script>
 
-    <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
+  <!-- Moment calendar/date plugin -->
+  <script src="../scripts/calendar/moment.min.js"></script>
 
-      <script type="text/javascript" src="../scripts/meal_planner.js">
-    </script>
-  </body>
-  <footer class="container-fluid">
-<p class="text-center text-muted">© Copyright 2016 foodplanner</p>
-</footer>
+  <script type="text/javascript" src="../scripts/meal_planner.js">
+  </script>
+</body>
+
 </html>
