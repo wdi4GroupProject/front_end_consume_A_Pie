@@ -60,7 +60,7 @@ console.log(URL);
       $("<img src=\"" + data.image_url + "\">"));
 
       $recipeTitle.html(
-      $("<p> Title: " + data.title + "</p>"));
+      $("<p>  " + data.title + "</p>"));
 
       $recipeDirections.html(
       $("<p>" + data.directions + "</p>"));
