@@ -13,7 +13,8 @@ $(function(){
       type: 'POST',
       dataType:'json'
     }).done(function(data) {
-      window.location = 'index.html';
+      sessionStorage.setItem('connectId', data);
+      window.location = 'after_login.html';
   })
   .fail(function(request, textStatus, errorThrown) {
     alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
@@ -32,23 +33,31 @@ $("#btn-login").on('click',function(){
     type: 'POST',
     dataType:'json'
   }).done(function(data) {
-    alert(data);
-    window.location = 'index.html';
+    sessionStorage.setItem("user",data.id);
+    sessionStorage.setItem("token",data.token);
+    window.location = 'after_login.html';
 })
 .fail(function(request, textStatus, errorThrown) {
   alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
 });
 });
-$('#btn-fblogin').on('click',function(){
+$("#logout").on('click',function(){
+  var token = sessionStorage.getItem('token');
   $.ajax({
-    url: "https://crossorigin.me/https://team5-backend.herokuapp.com/API/auth/google",
+    url: "https://team5-backend.herokuapp.com/API/logout",
     type: 'GET',
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+    }
   }).done(function(data) {
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
     window.location = 'index.html';
 })
 .fail(function(request, textStatus, errorThrown) {
   alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
 });
 });
+
 
 });
