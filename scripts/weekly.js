@@ -1,5 +1,27 @@
 console.log("weekly JS connected");
 $(function() {
+
+  //user authentication
+  var user = sessionStorage.getItem('user'),
+  token = sessionStorage.getItem('token');
+  $.ajax({
+      url: "https://team5-backend.herokuapp.com/API/authentication",
+      data: {
+        "user": user,
+      },
+      type: 'POST',
+      dataType: 'json',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+      }
+    }).done(function(data) {
+      console.log(data);
+    })
+    .fail(function(request, textStatus, errorThrown) {
+      console.log(textStatus);
+      window.location='login.html';
+    });
+    
 $('#run_button').on('click',function(e){
 var $userId       = $('#userid');
 var $dayDate      = $('#daydate');
