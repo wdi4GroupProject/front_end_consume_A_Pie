@@ -21,7 +21,7 @@ $(document).ready(function() {
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i]);
         $recipeImage.append(
-          $('<div class="hoverContainer"><div class="hovereffect"><img style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p><i class="icon-external-link"></i> <i class="icon-heart"></i></p></div></div></div>')
+          $('<div class="hoverContainer"><div class="hovereffect"><img style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p><a href="./recipe.html?recipe_id=' + data[i]._id + '"><i class="icon-external-link"></i></a> <i class="icon-heart"></p></div></div></div>')
         );
       }
    })
@@ -127,11 +127,26 @@ $('.verticalMeals').on('click', '.deleteMeal', function() {
    });
 } else { return false; }
 });
-// allow only one recipe to be selected
+
+// // allow only one recipe to be selected
+// $('.rightPanel').on('click', '.hoverContainer', function() {
+//   $('.selectRecipe').removeClass('selectRecipe');
+//     $($(this).find('img')).toggleClass('selectRecipe');
+// });
+
 $('.rightPanel').on('click', '.hoverContainer', function() {
   $('.selectRecipe').removeClass('selectRecipe');
+  // console.log($(this).find('img'));
+  console.log($($(this).find('img')));
+
+  if( $($(this).find('img')).hasClass('selectRecipe') ) {
+    // $($(this).find('img')).removeClass();
+    console.log('something');
+  } else {
     $($(this).find('img')).addClass('selectRecipe');
+  }
 });
+
 // add recipes to meal div
 $('.verticalMeals').on('click', 'div.mealCont', function() {
   // can only click meal list if one recipe is selected
