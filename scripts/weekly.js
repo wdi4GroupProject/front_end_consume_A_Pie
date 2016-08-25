@@ -89,7 +89,7 @@ for (var i=1; i<8; i++){
        var meal_container = [];
 
        for (var i=0; i < data.length; i++) {
-        meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="border-bottom: 1px solid grey;padding: 20px 0 20px 0 ; "></div>';
+        meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ; "></div>';
 
 
         $('#day'+1+'_meal_container').append(meal_container[i]);
@@ -120,7 +120,7 @@ recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="t
         $('#day'+2+'_meal_container').html('');
         var meal_container = [];
         for (var i=0; i < data.length; i++) {
-         meal_container[i]= '<div id="'+data[i]._id +'" class="row" style="border-bottom: 1px solid grey;padding: 20px 0 20px 0 ;"></div>';
+         meal_container[i]= '<div id="'+data[i]._id +'" class="row" style="padding: 20px 0 20px 0 ;"></div>';
          $('#day'+2+'_meal_container').append(meal_container[i]);
          for (var j=0; j < data[i].recipes.length; j++){
             var recipe_container = [];
@@ -149,7 +149,7 @@ recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="t
          $('#day'+3+'_meal_container').html('');
          var meal_container = [];
          for (var i=0; i < data.length; i++) {
-          meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="border-bottom: 1px solid grey;padding: 20px 0 20px 0 ;"></div>';
+          meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ;"></div>';
           $('#day'+3+'_meal_container').append(meal_container[i]);
           for (var j=0; j < data[i].recipes.length; j++){
              var recipe_container = [];
@@ -178,7 +178,7 @@ recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="t
           $('#day'+4+'_meal_container').html('');
           var meal_container = [];
           for (var i=0; i < data.length; i++) {
-           meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="border-bottom: 1px solid grey;padding: 20px 0 20px 0 ;"></div>';
+           meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ;"></div>';
            $('#day'+4+'_meal_container').append(meal_container[i]);
            for (var j=0; j < data[i].recipes.length; j++){
               var recipe_container = [];
@@ -206,7 +206,7 @@ recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="t
            $('#day'+5+'_meal_container').html('');
            var meal_container = [];
            for (var i=0; i < data.length; i++) {
-            meal_container[i]= '<div id="'+data[i]._id +'" class="row" style="border-bottom: 1px solid grey;padding: 20px 0 20px 0 ;"></div>';
+            meal_container[i]= '<div id="'+data[i]._id +'" class="row" style="padding: 20px 0 20px 0 ;"></div>';
             $('#day'+5+'_meal_container').append(meal_container[i]);
             for (var j=0; j < data[i].recipes.length; j++){
                var recipe_container = [];
@@ -234,7 +234,7 @@ recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="t
             $('#day'+6+'_meal_container').html('');
             var meal_container = [];
             for (var i=0; i < data.length; i++) {
-             meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="border-bottom: 1px solid grey;padding: 20px 0 20px 0 ;"></div>';
+             meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ;"></div>';
              $('#day'+6+'_meal_container').append(meal_container[i]);
              for (var j=0; j < data[i].recipes.length; j++){
                 var recipe_container = [];
@@ -263,7 +263,7 @@ recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="t
              var meal_container = [];
 
              for (var i=0; i < data.length; i++) {
-              meal_container[i]= '<div class="row"><div id="'+data[i]._id +'" class="row"style="border-bottom: 1px solid grey;padding: 20px 0 20px 0 ; "></div></div>';
+              meal_container[i]= '<div class="row"><div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ; "></div></div>';
               $('#day'+7+'_meal_container').append(meal_container[i]);
 
               for (var j=0; j < data[i].recipes.length; j++){
