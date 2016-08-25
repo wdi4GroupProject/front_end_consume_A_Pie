@@ -34,9 +34,9 @@ JS Plugins
 
 ### Contributers
 
-[chriskhoo](https://github.com/chriskhoo)
-[cxin7](https://github.com/cxin7)
-[Minghanlin](https://github.com/Minghanlin)
-[orangeshoes](https://github.com/orangeshoes)
-[Seahyt](https://github.com/Seahyt)
-[steph-wong](https://github.com/steph-wong)
+- [chriskhoo](https://github.com/chriskhoo)
+- [cxin7](https://github.com/cxin7)
+- [Minghanlin](https://github.com/Minghanlin)
+- [orangeshoes](https://github.com/orangeshoes)
+- [Seahyt](https://github.com/Seahyt)
+- [steph-wong](https://github.com/steph-wong)
