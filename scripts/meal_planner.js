@@ -26,10 +26,29 @@ $(document).ready(function() {
       window.location='login.html';
     });
 
+    //logout
+    $("#logout").on('click', function() {
+      var token = sessionStorage.getItem('token');
+      $.ajax({
+          url: "https://team5-backend.herokuapp.com/API/logout",
+          type: 'GET',
+          beforeSend: function(xhr) {   
+            xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+          }
+        }).done(function(data) {
+          sessionStorage.removeItem('user');
+          sessionStorage.removeItem('token');
+          window.location = 'index.html';
+        })
+        .fail(function(request, textStatus, errorThrown) {
+          alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+        });
+    });
+
    var populate_recipeImage = function(data){
      for (var i = 0; i < data.length; i++) {
        $recipeImage.append(
-         $('<div class="hoverContainer"><div class="hovereffect"><img id="'+ data[i]._id +'" class="img-responsive" style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p> <a href="./recipe.html?recipe_id' + data[i]._id + '"><i class="icon-external-link"></i> </a><i class="icon-frown" id="frown_' + data[i]._id + '"></i> <i class="icon-heart" id="heart_' + data[i]._id + '"></i></p></div></div></div>')
+         $('<div class="hoverContainer"><div class="hovereffect"><img id="'+ data[i]._id +'" class="img-responsive" style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p> <a href="./recipe.html?recipe_id=' + data[i]._id + '"><i class="icon-external-link"></i> </a><i class="icon-frown" id="frown_' + data[i]._id + '"></i> <i class="icon-heart" id="heart_' + data[i]._id + '"></i></p></div></div></div>')
        );
      }
    };
