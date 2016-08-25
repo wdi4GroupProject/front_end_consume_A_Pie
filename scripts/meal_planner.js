@@ -1,27 +1,4 @@
-console.log("meal_planner JS connected");
-<<<<<<< HEAD
-//user authentication
-var user = sessionStorage.getItem('user'),
-token = sessionStorage.getItem('token');
-$.ajax({
-    url: "https://team5-backend.herokuapp.com/API/authentication",
-    data: {
-      "user": user,
-    },
-    type: 'POST',
-    dataType: 'json',
-    beforeSend: function(xhr) {   
-      xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-    }
-  }).done(function(data) {
-    console.log(data);
-  })
-  .fail(function(request, textStatus, errorThrown) {
-    console.log(textStatus);
-    window.location='login.html';
-  });
-=======
->>>>>>> c5b84eb7aaec32747e9a0e699bccefe6dccdfdf8
+
 // Calendar function - Steph
 $(document).ready(function() {
   var $recipeImage         = $('#recipePicturesPlanner');
@@ -29,8 +6,25 @@ $(document).ready(function() {
   var $recipeDirections    = $('#intructions');
   var $recipeIngredients   = $('#ingredient-img');
   var $recipeCalories      = $('#calories');
-   var userID              = "57bcf4656862c50300de1058"; // for ajax calls
-   var token                = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ";
+  var user = sessionStorage.getItem('user'),
+  token = sessionStorage.getItem('token');
+  $.ajax({
+      url: "https://team5-backend.herokuapp.com/API/authentication",
+      data: {
+        "user": user,
+      },
+      type: 'POST',
+      dataType: 'json',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+      }
+    }).done(function(data) {
+      console.log(data);
+    })
+    .fail(function(request, textStatus, errorThrown) {
+      console.log(textStatus);
+      window.location='login.html';
+    });
 
    var populate_recipeImage = function(data){
      for (var i = 0; i < data.length; i++) {
@@ -42,12 +36,12 @@ $(document).ready(function() {
 
    var populate_user_recommendations = function(){
    $.ajax({
-     url: "https://team5-backend.herokuapp.com/API/recipes?user_id=" + userID,
+     url: "https://team5-backend.herokuapp.com/API/recipes?user_id=" +user ,
      type: 'GET',
      dataType: 'json',
-     beforeSend: function(xhr) {
-          xhr.setRequestHeader("Authorization", "Bearer " + token);
-        }
+     beforeSend: function(xhr) {   
+       xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+     }
     })
     .done(function(data) {
       $recipeImage.html("");
@@ -90,11 +84,11 @@ $.ajax({
   data: {
     start: verDate_formatted,
     end: verDate_formatted,
-    user_id: userID
+    user_id: user
   },
-  beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer " + token);
-     }
+  beforeSend: function(xhr) {   
+    xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+  }
  })
  .done(function(data) {
    $('#display_day_body').html("");
@@ -136,11 +130,11 @@ meals_ajax_call();
      dataType: 'json',
      data: {
        day: verDate_formatted,
-       user_id: userID
+       user_id: user
      },
-     beforeSend: function(xhr) {
-          xhr.setRequestHeader("Authorization", "Bearer " + token);
-        }
+     beforeSend: function(xhr) {   
+       xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+     }
     })
     .done(function(data) {
       meals_ajax_call();
@@ -157,9 +151,9 @@ $('.verticalMeals').on('click', '.deleteMeal', function() {
   $.ajax({
     url: 'https://team5-backend.herokuapp.com/API/meals?id='+delete_meal_id,
     type: 'DELETE',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
    })
    .done(function(data) {
      $('#delete_'+delete_meal_id).parent().remove();
@@ -203,9 +197,9 @@ $('.verticalMeals').on('click', 'div.mealCont', function() {
       recipes: recipeID
     },
     dataType: 'json',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
    })
    .done(function(data) {
      console.log(data);
@@ -280,11 +274,11 @@ $("#dialog").dialog({
     console.log (recipeID_fav);
     // console.log (userID);
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users?action=like&recipe_id='+recipeID_fav +'&id=' + userID,
+    url: 'https://team5-backend.herokuapp.com/API/users?action=like&recipe_id='+recipeID_fav +'&id=' + user,
     type: 'PUT',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
      })
      .done(function(data) {
       //  console.log ('like');
@@ -299,14 +293,14 @@ $("#dialog").dialog({
   // AJAX to blacklist recipe & to remove the same recipes from blacklist
   var addon_user_blacklist = function(recipeID_dis){
     console.log (recipeID_dis);
-    // console.log (userID);
+    // console.log (user);
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users?action=dislike&id='+ userID + '&recipe_id=' + recipeID_dis,
+    url: 'https://team5-backend.herokuapp.com/API/users?action=dislike&id='+ user + '&recipe_id=' + recipeID_dis,
     type: 'PUT',
     // dataType: 'json',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
      })
      .done(function(data) {
       //  console.log ('dislike');
@@ -338,12 +332,12 @@ $("#dialog").dialog({
   // AJAX to populate favourite recipes
   var populate_user_favourites = function(){
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+userID,
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+user,
     type: 'GET',
     dataType: 'json',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
      })
      .done(function(data) {
        $recipeImage.html("");
@@ -365,12 +359,12 @@ $("#dialog").dialog({
   // AJAX to populate blacklist recipes
   var populate_user_blacklist = function(){
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+userID,
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+user,
     type: 'GET',
     dataType: 'json',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
      })
      .done(function(data) {
        for (var i = 0; i < data.length; i++) {
@@ -394,12 +388,12 @@ $("#dialog").dialog({
   // AJAX to get favourite recipes
   var get_user_favourites = function(){
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+userID,
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+user,
     type: 'GET',
     dataType: 'json',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
      })
      .done(function(data) {
        for(var k=0; k < data.length; k++){
@@ -415,12 +409,12 @@ $("#dialog").dialog({
   // AJAX to get blacklist recipes
   var get_user_blacklist = function(){
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+userID,
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+user,
     type: 'GET',
     dataType: 'json',
-    beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer " + token);
-       }
+    beforeSend: function(xhr) {   
+      xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+    }
      })
      .done(function(data) {
        for(var k=0; k < data.length; k++){

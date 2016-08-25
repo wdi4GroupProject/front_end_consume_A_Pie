@@ -1,7 +1,4 @@
 
-
-console.log("recipe JS connected");
-
 $(function() {
 
   //user authentication
@@ -64,16 +61,16 @@ var $recipeCalories     = $('#calories');
 var recipe_id = QueryString.recipe_id;
 var URI = recipe_id;
 var URL = 'https://team5-backend.herokuapp.com/API/recipes/'+URI;
-console.log(URL);
-//Recipe ajax call
-  // $btn3.on('click', function() {
-  //   console.log('click click click');
+
     $.ajax({
 
       url: URL,
       type: 'GET',
 
       dataType: 'json',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
      }).done(function(data) {
       $recipeImage.html(
       $("<img src=\"" + data.image_url + "\">"));
@@ -94,6 +91,7 @@ console.log(URL);
     .fail(function(request, textStatus, errorThrown) {
       $recipeDirections.html("Sorry! An error occured when processing your phrase. Request " + request.status + " " + textStatus + " " + errorThrown);
     });
+
   });
 
 

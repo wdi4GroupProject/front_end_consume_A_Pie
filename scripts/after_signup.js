@@ -1,5 +1,8 @@
 // Calendar function
 $(document).ready(function() {
+  var user = sessionStorage.getItem('user'),
+  token = sessionStorage.getItem('token');
+
 
   (function() {
     var $frame = $('#horizontalCal');
@@ -31,6 +34,40 @@ $(document).ready(function() {
     });
 
 
+    var $recipeImage         = $('#recipePictures');
+    var $recipeTitle         = $('#recipe-title');
+    var $recipeDirections    = $('#intructions');
+    var $recipeIngredients   = $('#ingredient-img');
+    var $recipeCalories      = $('#calories');
+
+
+    // var recipe_id = QueryString.recipe_id;
+    // var URI = recipe_id;
+    var URL = 'https://team5-backend.herokuapp.com/recipe';
+    console.log(URL);
+
+    $.ajax({
+
+      url: URL,
+      type: 'GET',
+
+      dataType: 'json',
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("Authorization", "Bearer "+token+"");
+      }
+     })
+     .done(function(data) {
+       for (var i = 0; i < data.length; i++) {
+         console.log(data[i]);
+         $recipeImage.append(
+           $('<a href=/views/recipe.html?recipe_id=' + data[i]._id + '><img class="img-responsive thumbnail" style="height: 200px; width: 200px;" src='+ data[i].image_url +'></a>')
+         );
+       }
+
+    })
+       .fail(function(request, textStatus, errorThrown) {
+         $recipeDirections.html("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
 
     // horizontal calendar display
     var dayCont = $('div.dayDiv');
@@ -60,9 +97,6 @@ $(document).ready(function() {
     var start_date = date_array_formatted[0]; // ajax call parameter
     var end_date = date_array_formatted[date_array_formatted.length - 1]; // ajax call parameter
 
-
-    // AJAX call to retrieve meals for the week
-    var userID = "57bcf4656862c50300de1058"; // change to login user from sessions
     var meals_for_21days = {};
     $.ajax({
       url: 'https://team5-backend.herokuapp.com/API/meals',
@@ -70,11 +104,11 @@ $(document).ready(function() {
       data: {
         start: start_date,
         end: end_date,
-        user_id: userID
+        user_id: user
       },
       datatype: 'json',
       beforeSend: function(xhr) {
-        xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+        xhr.setRequestHeader("Authorization", "Bearer "+token+"");
       }
 
     }).done(function(data) {

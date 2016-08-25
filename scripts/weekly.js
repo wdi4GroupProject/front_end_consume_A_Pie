@@ -1,4 +1,3 @@
-console.log("weekly JS connected");
 $(function() {
 
   //user authentication
@@ -21,9 +20,9 @@ $(function() {
       console.log(textStatus);
       window.location='login.html';
     });
-    
+
 $('#run_button').on('click',function(e){
-var $userId       = $('#userid');
+var $user       = $('#user');
 var $dayDate      = $('#daydate');
 var $mealNum      = $('#mealnum');
 var $mealrecipes  = $('#mealrecipes');
@@ -68,7 +67,7 @@ for (var i=1; i<8; i++){
 }
 // AJAX call to retrieve meals for date
 // Create meals for date
-var userID = "57bcf4656862c50300de1058";
+
 // Fill meal with recipe title & pictures
 // to refactor to single ajax call followed by population of data
     $.ajax({
@@ -77,12 +76,12 @@ var userID = "57bcf4656862c50300de1058";
       data: {
         start   : date_array_formatted[1],
         end     : date_array_formatted[1],
-        user_id : userID
+        user_id : user
       },
       dataType: 'json',
-      beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
-     }
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+      }
        }).done(function(data) {
        //scan through meals database
        console.log(data);
@@ -111,12 +110,12 @@ var userID = "57bcf4656862c50300de1058";
        data: {
          start   : date_array_formatted[2],
          end     : date_array_formatted[2],
-         user_id : userID
+         user_id : user
        },
        dataType: 'json',
-       beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
-     }
+       beforeSend: function(xhr) {   
+         xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+       }
         }).done(function(data) {
         //scan through meals database
         $('#day'+2+'_meal_container').html('');
@@ -140,12 +139,12 @@ var userID = "57bcf4656862c50300de1058";
         data: {
           start   : date_array_formatted[3],
           end     : date_array_formatted[3],
-          user_id : userID
+          user_id : user
         },
         dataType: 'json',
-        beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
-     }
+        beforeSend: function(xhr) {   
+          xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+        }
          }).done(function(data) {
          //scan through meals database
          $('#day'+3+'_meal_container').html('');
@@ -170,12 +169,12 @@ var userID = "57bcf4656862c50300de1058";
          data: {
            start   : date_array_formatted[4],
            end     : date_array_formatted[4],
-           user_id : userID
+           user_id : user
          },
          dataType: 'json',
-         beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
-     }
+         beforeSend: function(xhr) {   
+           xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+         }
           }).done(function(data) {
           //scan through meals database
           $('#day'+4+'_meal_container').html('');
@@ -199,12 +198,12 @@ var userID = "57bcf4656862c50300de1058";
           data: {
             start   : date_array_formatted[5],
             end     : date_array_formatted[5],
-            user_id : userID
+            user_id : user
           },
           dataType: 'json',
-          beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
-     }
+          beforeSend: function(xhr) {   
+            xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+          }
            }).done(function(data) {
            //scan through meals database
            $('#day'+5+'_meal_container').html('');
@@ -228,12 +227,12 @@ var userID = "57bcf4656862c50300de1058";
            data: {
              start   : date_array_formatted[6],
              end     : date_array_formatted[6],
-             user_id : userID
+             user_id : user
            },
            dataType: 'json',
-           beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
-     }
+           beforeSend: function(xhr) {   
+             xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+           }
             }).done(function(data) {
             //scan through meals database
             $('#day'+6+'_meal_container').html('');
@@ -257,12 +256,12 @@ var userID = "57bcf4656862c50300de1058";
             data: {
               start   : date_array_formatted[7],
               end     : date_array_formatted[7],
-              user_id : userID
+              user_id : user
             },
             dataType: 'json',
-            beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
-     }
+            beforeSend: function(xhr) {   
+              xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+            }
              }).done(function(data) {
              //scan through meals database
              $('#day'+7+'_meal_container').html('');

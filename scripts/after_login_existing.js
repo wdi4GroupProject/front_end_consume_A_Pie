@@ -2,7 +2,7 @@
 $(document).ready(function() {
   //user authentication
   var user = sessionStorage.getItem('user'),
-  token = sessionStorage.getItem('token');
+    token = sessionStorage.getItem('token');
   $.ajax({
       url: "https://team5-backend.herokuapp.com/API/authentication",
       data: {
@@ -11,34 +11,34 @@ $(document).ready(function() {
       type: 'POST',
       dataType: 'json',
       beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
       }
     }).done(function(data) {
       console.log(data);
     })
     .fail(function(request, textStatus, errorThrown) {
       console.log(textStatus);
-      window.location='login.html';
+      window.location = 'login.html';
     });
 
-//logout
-  $("#logout").on('click',function(){
+  //logout
+  $("#logout").on('click', function() {
     var token = sessionStorage.getItem('token');
     $.ajax({
-      url: "https://team5-backend.herokuapp.com/API/logout",
-      type: 'GET',
-      beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-      }
-    }).done(function(data) {
-      sessionStorage.removeItem('user');
-      sessionStorage.removeItem('token');
-      window.location = 'index.html';
-  })
-  .fail(function(request, textStatus, errorThrown) {
-    alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+        url: "https://team5-backend.herokuapp.com/API/logout",
+        type: 'GET',
+        beforeSend: function(xhr) {   
+          xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+        }
+      }).done(function(data) {
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+        window.location = 'index.html';
+      })
+      .fail(function(request, textStatus, errorThrown) {
+        alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+      });
   });
-});
 
   (function() {
     var $frame = $('#horizontalCal');
@@ -109,11 +109,11 @@ $(document).ready(function() {
       data: {
         start: start_date,
         end: end_date,
-        user_id: userID
+        user_id: user
       },
       datatype: 'json',
       beforeSend: function(xhr) {
-        xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+        xhr.setRequestHeader("Authorization", "Bearer " + token + ""); 
       }
 
     }).done(function(data) {

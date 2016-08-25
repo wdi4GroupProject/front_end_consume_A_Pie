@@ -4,7 +4,7 @@ console.log("signup JS connected");
 // auto login after signup
 // provide user_id in sessions for use in rest of app
 $(function(){
-  $("#btn-signup").on('click',function(){
+  $("#btn-confirm").on('click',function(){
     var $email = $("#email"),
     $password = $("#password");
     $.ajax({
@@ -16,8 +16,9 @@ $(function(){
       type: 'POST',
       dataType:'json'
     }).done(function(data) {
-      sessionStorage.setItem('connectId', data);
-      window.location = 'after_login.html';
+      sessionStorage.setItem("user",data.id);
+      sessionStorage.setItem("token",data.token);
+      window.location = 'after_signup.html';
   })
   .fail(function(request, textStatus, errorThrown) {
     alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
