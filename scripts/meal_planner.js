@@ -1,25 +1,25 @@
 console.log("meal_planner JS connected");
 // Calendar function - Steph
 $(document).ready(function() {
-   var $recipeImage         = $('#recipePicturesPlanner');
-   var $recipeTitle         = $('#recipe-title');
-   var $recipeDirections    = $('#intructions');
-   var $recipeIngredients   = $('#ingredient-img');
-   var $recipeCalories      = $('#calories');
+  var $recipeImage         = $('#recipePicturesPlanner');
+  var $recipeTitle         = $('#recipe-title');
+  var $recipeDirections    = $('#intructions');
+  var $recipeIngredients   = $('#ingredient-img');
+  var $recipeCalories      = $('#calories');
    var userID              = "57bcf4656862c50300de1058"; // for ajax calls
    var token                = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ";
 
    var populate_recipeImage = function(data){
      for (var i = 0; i < data.length; i++) {
        $recipeImage.append(
-         $('<div class="hoverContainer"><div class="hovereffect"><img id="'+ data[i]._id +'" class="img-responsive" style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p> <i class="icon-external-link"></i> <i class="icon-frown"></i> <i class="icon-heart" id="heart_' + data[i]._id + '"></i></p></div></div></div>')
+         $('<div class="hoverContainer"><div class="hovereffect"><img id="'+ data[i]._id +'" class="img-responsive" style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p> <a href="./recipe.html?recipe_id' + data[i]._id + '"><i class="icon-external-link"></i> </a><i class="icon-frown" id="frown_' + data[i]._id + '"></i> <i class="icon-heart" id="heart_' + data[i]._id + '"></i></p></div></div></div>')
        );
      }
    };
 
    var populate_user_recommendations = function(){
    $.ajax({
-     url: "https://team5-backend.herokuapp.com/API/recipes",
+     url: "https://team5-backend.herokuapp.com/API/recipes?user_id=" + userID,
      type: 'GET',
      dataType: 'json',
      beforeSend: function(xhr) {
@@ -33,7 +33,7 @@ $(document).ready(function() {
       get_user_blacklist();
    })
       .fail(function(request, textStatus, errorThrown) {
-        $recipeDirections.html("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+        alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
       });
     };
 
@@ -250,25 +250,14 @@ $("#dialog").dialog({
     ]
   });
 
-  // indicate recipe has been liked
-  $('#recipePicturesPlanner').on('click', '.icon-heart', function() {
-    $(this).toggleClass('recipeFav');
-  });
-  // hide recipe when dislike
-  $('#recipePicturesPlanner').on('click', '.icon-frown', function() {
-    if (confirm('Are you sure you want to hide this recipe?')) {
-      $(this).closest('.hoverContainer').hide();
-    } else {
-      return false;
-    }
-  });
+
 
   // AJAX to fav recipe & to remove the same recipes from fav list
-  var addon_user_favourites = function(recipeID){
-    console.log (recipeID);
-    console.log (userID);
+  var addon_user_favourites = function(recipeID_fav){
+    console.log (recipeID_fav);
+    // console.log (userID);
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users?action=like&recipe_id='+recipeID +'&id=' + userID,
+    url: 'https://team5-backend.herokuapp.com/API/users?action=like&recipe_id='+recipeID_fav +'&id=' + userID,
     type: 'PUT',
     beforeSend: function(xhr) {
          xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -285,9 +274,11 @@ $("#dialog").dialog({
   };
 
   // AJAX to blacklist recipe & to remove the same recipes from blacklist
-  var addon_user_blacklist = function(recipeID){
+  var addon_user_blacklist = function(recipeID_dis){
+    console.log (recipeID_dis);
+    // console.log (userID);
   $.ajax({
-    url: 'https://team5-backend.herokuapp.com/API/users?action=dislike&id='+ userID + '&recipe_id=' + recipeID,
+    url: 'https://team5-backend.herokuapp.com/API/users?action=dislike&id='+ userID + '&recipe_id=' + recipeID_dis,
     type: 'PUT',
     // dataType: 'json',
     beforeSend: function(xhr) {
@@ -296,7 +287,7 @@ $("#dialog").dialog({
      })
      .done(function(data) {
       //  console.log ('dislike');
-      //  console.log (data);
+       console.log (data);
     })
      .fail(function(request, textStatus, errorThrown) {
        console.log(request);
@@ -305,13 +296,19 @@ $("#dialog").dialog({
   };
 
   $('#recipePicturesPlanner').on('click', 'i.icon-frown', function() {
-    var recipeID_dislike = this.id.split('_')[1];
-    addon_user_blacklist(recipeID_dislike);
+    if (confirm('Are you sure you want to hide this recipe?')) {
+      var recipeID_dislike = this.id.split('_')[1];
+      addon_user_blacklist(recipeID_dislike);
+      $(this).closest('.hoverContainer').hide();
+    } else {
+      return false;
+    }
   });
 
   $('#recipePicturesPlanner').on('click', 'i.icon-heart', function() {
     var recipeID_heart = this.id.split('_')[1];
     addon_user_favourites(recipeID_heart);
+    $(this).toggleClass('recipeFav');
   });
 
 

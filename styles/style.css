@@ -534,6 +534,7 @@ a.deleteMeal:hover {
   filter: alpha(opacity=100);
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+  text-decoration: none;
 }
 .hovereffect i:hover {
   color: #F9C680;
