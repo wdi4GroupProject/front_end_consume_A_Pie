@@ -3,6 +3,25 @@ $(document).ready(function() {
   var user = sessionStorage.getItem('user'),
   token = sessionStorage.getItem('token');
 
+  //logout
+  $("#logout").on('click', function() {
+    var token = sessionStorage.getItem('token');
+    $.ajax({
+        url: "https://team5-backend.herokuapp.com/API/logout",
+        type: 'GET',
+        beforeSend: function(xhr) {   
+          xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+        }
+      }).done(function(data) {
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+        window.location = 'index.html';
+      })
+      .fail(function(request, textStatus, errorThrown) {
+        alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+      });
+  });
+
 
   (function() {
     var $frame = $('#horizontalCal');
@@ -98,30 +117,30 @@ $(document).ready(function() {
     var end_date = date_array_formatted[date_array_formatted.length - 1]; // ajax call parameter
 
     var meals_for_21days = {};
-    $.ajax({
-      url: 'https://team5-backend.herokuapp.com/API/meals',
-      type: 'GET',
-      data: {
-        start: start_date,
-        end: end_date,
-        user_id: user
-      },
-      datatype: 'json',
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");
-      }
-
-    }).done(function(data) {
-      meals_for_21days = data;
-
-      var display_day_meals = find_same_day_meals(display_date, meals_for_21days);
-      create_new_meal_divs(display_day_meals);
-      fill_calendar(meals_for_21days);
-    })
-
-    .fail(function(request, textStatus, errorThrown) {
-      alert("Request " + request.status + " " + textStatus + " " + errorThrown);
-    });
+    // $.ajax({
+    //   url: 'https://team5-backend.herokuapp.com/API/meals',
+    //   type: 'GET',
+    //   data: {
+    //     start: start_date,
+    //     end: end_date,
+    //     user_id: user
+    //   },
+    //   datatype: 'json',
+    //   beforeSend: function(xhr) {
+    //     xhr.setRequestHeader("Authorization", "Bearer "+token+"");
+    //   }
+    //
+    // }).done(function(data) {
+    //   meals_for_21days = data;
+    //
+    //   var display_day_meals = find_same_day_meals(display_date, meals_for_21days);
+    //   create_new_meal_divs(display_day_meals);
+    //   fill_calendar(meals_for_21days);
+    // })
+    //
+    // .fail(function(request, textStatus, errorThrown) {
+    //   alert("Request " + request.status + " " + textStatus + " " + errorThrown);
+    // });
 
     // checks 2 dates are the same
     var same_day_check = function(target_date1, target_date2) {
