@@ -1,6 +1,6 @@
 // Calendar function
 $(document).ready(function() {
-
+$(".se-pre-con").fadeOut("slow");;
   (function() {
     var $frame = $('#horizontalCal');
     var $wrap  = $frame.parent();

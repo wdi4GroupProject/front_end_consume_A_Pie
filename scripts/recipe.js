@@ -63,7 +63,7 @@ console.log(URL);
       $("<p>  " + data.title + "</p>"));
 
       $recipeDirections.html(
-      $("<p>" + data.directions + "</p>"));
+      $("<p> Directions:" + data.directions + "</p>"));
 
       $recipeIngredients.html(
       $("<p>" + data.ingredients + "</p>"));
