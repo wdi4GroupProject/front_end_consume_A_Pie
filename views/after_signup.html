@@ -1,97 +1,228 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title> Meal Planner | After Login </title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- group style sheet -->
-    <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
-
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title> Meal Planner | After Login </title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
 
-  <nav class="navbar navbar navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="container">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand lobster-font" href="/views/index.html">Food Planner</a>
-        </div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav pull-right">
+  <!-- group style sheet -->
+  <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
 
-            <li><a class="hvr-underline-from-center" href="/views/meal_planner.html">Meal Planner</a></li>
-            <li><a class="hvr-underline-from-center"href="/views/weekly.html">Recipe</a></li>
-            <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
-            <li><a class="hvr-underline-from-center"href="/views/login.html">Log in</a></li>
-            <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
-           <ul class="dropdown-menu">
-             <!-- <li><a href="/views/profile.html">Profile</a></li>
+  <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
+</head>
+
+
+<nav class="navbar navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand lobster-font" href="./index.html">What To Fork?</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav pull-right">
+
+          <li><a class="hvr-underline-from-center" href="./meal_planner.html">Meal Planner</a></li>
+          <li><a class="hvr-underline-from-center" href="./weekly.html">Weekly</a></li>
+          <li><a class="hvr-underline-from-center" href="./after_login_existing.html">Daily</a></li>
+          <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
+          <!-- <li><a class="hvr-underline-from-center" href="./login.html">Log in</a></li> -->
+          <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <!-- <li><a href="/views/profile.html">Profile</a></li>
              <li><a href="/views/settings.html">Settings</a></li> -->
-             <li><a href="/views/index.html">Log out</a></li>
-         </ul>
-        </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-    <div class="container-fluid color-palette">
-      <div class="backgrd-col-red1"></div>
-      <div class="backgrd-col-orange1"></div>
-    </div>
-  </nav>
-
-
-
-    <body>
-
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 banner-background">
-      <div class="col-lg-6 col-md-6 col-sm-6 text-center" >
-        <h1>Welcome</h1>
-        <h3 id="username">User name</h3>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-
+              <li><a href="#" id="logout">Log out</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
 
   </div>
+  <div class="container-fluid color-palette">
+    <div class="backgrd-col-red1"></div>
+    <div class="backgrd-col-orange1"></div>
+  </div>
+</nav>
 
 
-<div class="container">
-<div class="row">
-  <div class="col-lg-12">
+
+<body>
 
 
-        <h1 class="page-header text-center raleway-font">Recommendation</h1>
+  <div class="container-fluid">
 
 
-        <div id = "recipePictures" class ="page-header text-center"></div>
+    <!-- Calender -->
+    <div class="container">
 
+      <div class="wrap">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="scrollbar">
+              <div class="handle" style="-webkit-transform: translateZ(0px) translateX(67px); width: 168px;">
+                <div class="mousearea"></div>
+              </div>
+            </div>
+
+            <div class="frame" id="horizontalCal" style="overflow: hidden;">
+              <ul class="clearfix calendar" style="-webkit-transform: translateZ(0px) translateX(0px); width: 6840px;">
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv opensans-font"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv opensans-font"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+                <li>
+                  <div class="dayDiv opensans-font"></div>
+                  <div class="dateDiv opensans-font"></div>
+                  <div class="recipeDiv"></div>
+                </li>
+
+              </ul>
+
+              <div class="controls center background-hover">
+                <button class="btn glyphicon glyphicon-menu-left horPrev"></button>
+                <button class="btn glyphicon glyphicon-menu-right horNext"></button>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
     </div>
 
-</div>
 
-                    <!-- Image gallery of food -->
-        <!-- <div class="row">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+
+
+          <h1 class="page-header text-center raleway-font">Recommendation</h1>
+
+
+          <div id="recipePictures" class="page-header text-center"></div>
+
+        </div>
+
+      </div>
+
+      <!-- Image gallery of food -->
+      <!-- <div class="row">
             <div class="col-lg-4 col-md-4 col-xs-6 thumb">
                 <a class="thumbnail" href="#">
                   <div  id="recipeimage1" class="col-lg-4 col-md-4 col-sm-6">
@@ -147,26 +278,27 @@
                 </p>
             </div> -->
 
-        <hr>
-</div>
-    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+      <hr>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script   src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"   integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="   crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 
     <!-- Sly scrolling plugin -->
-    <script src="http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
-    <script src="http://darsa.in/sly/js/sly.min.js"></script>
+    <script src="https://crossorigin.me/http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
+    <script src="https://crossorigin.me/http://darsa.in/sly/js/sly.min.js"></script>
 
     <!-- Moment calendar/date plugin -->
     <script src="../scripts/calendar/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js">
     </script>
-      <script type="text/javascript" src="../scripts/after_signup.js">
+    <script type="text/javascript" src="../scripts/after_signup.js">
     </script>
-  </body>
-  <footer class="container-fluid">
+</body>
+<footer class="container-fluid">
   <p class="text-center text-muted">© Copyright 2016 foodplanner</p>
-  </footer>
+</footer>
+
 </html>
