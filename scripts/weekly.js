@@ -2,7 +2,7 @@ $(function() {
 
   //user authentication
   var user = sessionStorage.getItem('user'),
-  token = sessionStorage.getItem('token');
+    token = sessionStorage.getItem('token');
   $.ajax({
       url: "https://team5-backend.herokuapp.com/API/authentication",
       data: {
@@ -11,270 +11,213 @@ $(function() {
       type: 'POST',
       dataType: 'json',
       beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
       }
     }).done(function(data) {
       console.log(data);
     })
     .fail(function(request, textStatus, errorThrown) {
       console.log(textStatus);
-      window.location='login.html';
+      window.location = 'login.html';
     });
 
-$('#run_button').on('click',function(e){
-var $user       = $('#user');
-var $dayDate      = $('#daydate');
-var $mealNum      = $('#mealnum');
-var $mealrecipes  = $('#mealrecipes');
-var $recipeId     = $('.pull-right fav-margin');
-var $recipeImage  = $('#meal-image-holder');
-//day variables
-var d = new Date();
-var weekday = new Array(7);
-weekday[0]=  "Sunday";
-weekday[1] = "Monday";
-weekday[2] = "Tuesday";
-weekday[3] = "Wednesday";
-weekday[4] = "Thursday";
-weekday[5] = "Friday";
-weekday[6] = "Saturday";
-var n = weekday[d.getDay()];
-// get today's date
-var getDayFormat = function(day){
-var dd = day.getDate();
-var mm = day.getMonth()+1; //January is 0!
-var yyyy = day.getFullYear();
-if(dd<10) {
-    dd='0'+dd;
-}
-if(mm<10) {
-    mm='0'+mm;
-}
-return yyyy+'-'+mm+'-'+(dd);
-};
-var day_x =  new Date();
-if($('#date_input').val()) {
-  var date_input = $('#date_input').val().split('-');
-  day_x = new Date(date_input[0],date_input[1]-1,date_input[2]) ;
-}
-var date_array = [];
-var date_array_formatted = [];
-for (var i=1; i<8; i++){
-  date_array[i] = new Date(day_x.getFullYear(),day_x.getMonth(),day_x.getDate()+i-1);
-  date_array_formatted[i] = getDayFormat(date_array[i]);
-  $('#day'+i+'_day').html(weekday[date_array[i].getDay()]);
-  $('#day'+i+'_date').html(date_array_formatted[i]);
-}
-// AJAX call to retrieve meals for date
-// Create meals for date
-
-// Fill meal with recipe title & pictures
-// to refactor to single ajax call followed by population of data
+    // AJAX to get favourite recipes
+    var get_user_favourites = function(){
     $.ajax({
-      url: 'https://team5-backend.herokuapp.com/API/meals',
+      url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+user,
       type: 'GET',
-      data: {
-        start   : date_array_formatted[1],
-        end     : date_array_formatted[1],
-        user_id : user
-      },
       dataType: 'json',
       beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
       }
-       }).done(function(data) {
-       //scan through meals database
-       console.log(data);
-       $('#day'+1+'_meal_container').html('');
-       var meal_container = [];
-
-       for (var i=0; i < data.length; i++) {
-        meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ; "></div>';
-
-
-        $('#day'+1+'_meal_container').append(meal_container[i]);
-
-        for (var j=0; j < data[i].recipes.length; j++){
-           var recipe_container = [];
-recipe_container[j] = '<div class="hoverContainer" style="width:150px; height: 150px"><div class="hovereffect" style="width:150px; height: 160px"><div class="thumbnail"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive" src='+ data[i].recipes[j].image_url +'></div><div class="overlay"><a href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><h2>' + data[i].recipes[j].title + '</h2></a></div></div></div>';
-        }
-       }
-     })
-     .fail(function(request, textStatus, errorThrown) {
-       $recipeId.html("Request " + request.status + " " + textStatus + " " + errorThrown);
-     });
-     $.ajax({
-       url: 'https://team5-backend.herokuapp.com/API/meals',
-       type: 'GET',
-       data: {
-         start   : date_array_formatted[2],
-         end     : date_array_formatted[2],
-         user_id : user
-       },
-       dataType: 'json',
-       beforeSend: function(xhr) {   
-         xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-       }
-        }).done(function(data) {
-        //scan through meals database
-        $('#day'+2+'_meal_container').html('');
-        var meal_container = [];
-        for (var i=0; i < data.length; i++) {
-         meal_container[i]= '<div id="'+data[i]._id +'" class="row" style="padding: 20px 0 20px 0 ;"></div>';
-         $('#day'+2+'_meal_container').append(meal_container[i]);
-         for (var j=0; j < data[i].recipes.length; j++){
-            var recipe_container = [];
-            recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="thumbnail"href="/views/recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" src='+ data[i].recipes[j].image_url +'></a></div>';
-            $('#' + data[i]._id).append(recipe_container[j]);
+       })
+       .done(function(data) {
+         for(var p=0; p < data.length; p++){
+            $('.heart_'+data[p]._id+'_').addClass('recipeFav');
          }
-        }
       })
-      .fail(function(request, textStatus, errorThrown) {
-        $recipeId.html("Request " + request.status + " " + textStatus + " " + errorThrown);
-      });
-      $.ajax({
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+
+    // AJAX to get blacklist recipes
+    var get_user_blacklist = function(){
+    $.ajax({
+      url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+user,
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
+       })
+       .done(function(data) {
+         for(var p=0; p < data.length; p++){
+            $('.frown_'+data[p]._id+'_').addClass('recipeDis');
+         }
+      })
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+    // AJAX to fav or unlike recipe
+    var addon_user_favourites = function(recipeID_fav){
+    $.ajax({
+      url: 'https://team5-backend.herokuapp.com/API/users?action=like&recipe_id='+recipeID_fav +'&id=' + user,
+      type: 'PUT',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
+       })
+       .done(function(data) {
+         console.log('recipe toggled on favourites list');
+      })
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+    // AJAX to blacklist recipe & to remove the same recipes from blacklist
+    var addon_user_blacklist = function(recipeID_dis){
+    $.ajax({
+      url: 'https://team5-backend.herokuapp.com/API/users?action=dislike&id='+ user + '&recipe_id=' + recipeID_dis,
+      type: 'PUT',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
+       })
+       .done(function(data) {
+         console.log('recipe toggled on blacklist');
+      })
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+    $('.meal_cont').on('click', 'i.icon-frown', function() {
+      var recipeID_dislike = this.getAttribute("class").split('_')[1];
+      console.log(recipeID_dislike);
+      addon_user_blacklist(recipeID_dislike);
+      $(this).toggleClass('recipeDis');
+    });
+
+    $('.meal_cont').on('click', 'i.icon-heart', function() {
+      var recipeID_heart = this.getAttribute("class").split('_')[1];
+      console.log(recipeID_heart);
+      addon_user_favourites(recipeID_heart);
+      $(this).toggleClass('recipeFav');
+    });
+
+  $('#run_button').on('click', function(e) {
+
+    // get today's date or input date
+    var day_x = new Date();
+    if ($('#date_input').val()) {
+      var date_input = $('#date_input').val().split('-');
+      day_x = new Date(date_input[0], date_input[1] - 1, date_input[2]);
+    }
+
+    // day variables
+    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    // function to get day in format for ajax call
+    var getDayFormat = function(day) {
+      var dd = day.getDate();
+      var mm = day.getMonth() + 1; //January is 0!
+      var yyyy = day.getFullYear();
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      return yyyy + '-' + mm + '-' + (dd);
+    };
+
+    // store week's dates
+    var date_array = [];
+    var date_array_formatted = [];
+    for (var i = 1; i < 8; i++) {
+      // day's date
+      date_array[i] = new Date(day_x.getFullYear(), day_x.getMonth(), day_x.getDate() + i - 1);
+      // day in ajax format
+      date_array_formatted[i] = getDayFormat(date_array[i]);
+      // update div day and date
+      $('#day' + i + '_day').html(weekday[date_array[i].getDay()]);
+      $('#day' + i + '_date').html(date_array_formatted[i]);
+    }
+
+    // function to check 2 dates are the same
+    var same_day_check = function(target_date1, target_date2) {
+      var ddA = target_date1.getDate();
+      var mmA = target_date1.getMonth() + 1; //January is 0!
+      var yyyyA = target_date1.getFullYear();
+
+      var ddB = new Date(target_date2).getDate();
+      var mmB = new Date(target_date2).getMonth() + 1; //January is 0!
+      var yyyyB = new Date(target_date2).getFullYear();
+
+      if ((ddA === ddB) && (mmA === mmB) && (yyyyA === yyyyB)) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    // Create meals for date
+    // Fill meal with recipe title & pictures
+    var populate_day_container = function(day_num, day_data){
+      // clear day container
+      $('#day' + day_num + '_meal_container').html('');
+
+      // create meal containers
+      for (var i = 0; i < day_data.length; i++) {
+        $('#day' + day_num + '_meal_container').append('<div id="' + day_data[i]._id + '" class="row"style="padding: 20px 0 20px 0 ; "></div>');
+
+        // populate meal containers with recipe images
+        for (var j = 0; j < day_data[i].recipes.length; j++) {
+          $('#' + day_data[i]._id).append('<div class="hoverContainer" style="width:150px; height: 150px"><div class="hovereffect" style="width:150px; height: 160px"><div class="thumbnail"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive" src=' + day_data[i].recipes[j].image_url + '></div><div class="overlay"><h2>' + day_data[i].recipes[j].title + '</h2><p><a href="./recipe.html?recipe_id=' + day_data[i].recipes[j]._id + '"><i class="icon-external-link"></i></a><i class="icon-frown frown_' + day_data[i].recipes[j]._id + '_"></i><i class="icon-heart heart_' + day_data[i].recipes[j]._id + '_"></i></p></div></div></div>');
+        }
+      }
+    };
+
+    // AJAX call to retrieve meals for date
+    $.ajax({
         url: 'https://team5-backend.herokuapp.com/API/meals',
         type: 'GET',
         data: {
-          start   : date_array_formatted[3],
-          end     : date_array_formatted[3],
-          user_id : user
+          start: date_array_formatted[1],
+          end: date_array_formatted[7],
+          user_id: user
         },
         dataType: 'json',
         beforeSend: function(xhr) {   
-          xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+          xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
         }
-         }).done(function(data) {
-         //scan through meals database
-         $('#day'+3+'_meal_container').html('');
-         var meal_container = [];
-         for (var i=0; i < data.length; i++) {
-          meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ;"></div>';
-          $('#day'+3+'_meal_container').append(meal_container[i]);
-          for (var j=0; j < data[i].recipes.length; j++){
-             var recipe_container = [];
-recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="thumbnail" href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive " src='+ data[i].recipes[j].image_url +'></a></div>';             $('#' + data[i]._id).append(recipe_container[j]);
-          }
-         }
-       })
-       .fail(function(request, textStatus, errorThrown) {
-         $recipeId.html("Request " + request.status + " " + textStatus + " " + errorThrown);
-       });
+      }).done(function(data) {
+        // instantiate array
+        var data_daily = [];
 
-       $.ajax({
-         url: 'https://team5-backend.herokuapp.com/API/meals',
-         type: 'GET',
-         data: {
-           start   : date_array_formatted[4],
-           end     : date_array_formatted[4],
-           user_id : user
-         },
-         dataType: 'json',
-         beforeSend: function(xhr) {   
-           xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-         }
-          }).done(function(data) {
-          //scan through meals database
-          $('#day'+4+'_meal_container').html('');
-          var meal_container = [];
-          for (var i=0; i < data.length; i++) {
-           meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ;"></div>';
-           $('#day'+4+'_meal_container').append(meal_container[i]);
-           for (var j=0; j < data[i].recipes.length; j++){
-              var recipe_container = [];
-recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="thumbnail" href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive " src='+ data[i].recipes[j].image_url +'></a></div>';              $('#' + data[i]._id).append(recipe_container[j]);
-           }
-          }
-        })
-        .fail(function(request, textStatus, errorThrown) {
-          $recipeId.html("Request " + request.status + " " + textStatus + " " + errorThrown);
-        });
-        $.ajax({
-          url: 'https://team5-backend.herokuapp.com/API/meals',
-          type: 'GET',
-          data: {
-            start   : date_array_formatted[5],
-            end     : date_array_formatted[5],
-            user_id : user
-          },
-          dataType: 'json',
-          beforeSend: function(xhr) {   
-            xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-          }
-           }).done(function(data) {
-           //scan through meals database
-           $('#day'+5+'_meal_container').html('');
-           var meal_container = [];
-           for (var i=0; i < data.length; i++) {
-            meal_container[i]= '<div id="'+data[i]._id +'" class="row" style="padding: 20px 0 20px 0 ;"></div>';
-            $('#day'+5+'_meal_container').append(meal_container[i]);
-            for (var j=0; j < data[i].recipes.length; j++){
-               var recipe_container = [];
-recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="thumbnail" href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive " src='+ data[i].recipes[j].image_url +'></a></div>';               $('#' + data[i]._id).append(recipe_container[j]);
-            }
-           }
-         })
-         .fail(function(request, textStatus, errorThrown) {
-           $recipeId.html("Request " + request.status + " " + textStatus + " " + errorThrown);
-         });
-         $.ajax({
-           url: 'https://team5-backend.herokuapp.com/API/meals',
-           type: 'GET',
-           data: {
-             start   : date_array_formatted[6],
-             end     : date_array_formatted[6],
-             user_id : user
-           },
-           dataType: 'json',
-           beforeSend: function(xhr) {   
-             xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-           }
-            }).done(function(data) {
-            //scan through meals database
-            $('#day'+6+'_meal_container').html('');
-            var meal_container = [];
-            for (var i=0; i < data.length; i++) {
-             meal_container[i]= '<div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ;"></div>';
-             $('#day'+6+'_meal_container').append(meal_container[i]);
-             for (var j=0; j < data[i].recipes.length; j++){
-                var recipe_container = [];
-recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="thumbnail" href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive " src='+ data[i].recipes[j].image_url +'></a></div>';                $('#' + data[i]._id).append(recipe_container[j]);
-             }
-            }
-          })
-          .fail(function(request, textStatus, errorThrown) {
-            $recipeId.html("Request " + request.status + " " + textStatus + " " + errorThrown);
-          });
-          $.ajax({
-            url: 'https://team5-backend.herokuapp.com/API/meals',
-            type: 'GET',
-            data: {
-              start   : date_array_formatted[7],
-              end     : date_array_formatted[7],
-              user_id : user
-            },
-            dataType: 'json',
-            beforeSend: function(xhr) {   
-              xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-            }
-             }).done(function(data) {
-             //scan through meals database
-             $('#day'+7+'_meal_container').html('');
-             var meal_container = [];
+        // for each day
+        for (var l = 1; l < 8 ; l++){
+          data_daily[l] = [];
 
-             for (var i=0; i < data.length; i++) {
-              meal_container[i]= '<div class="row"><div id="'+data[i]._id +'" class="row"style="padding: 20px 0 20px 0 ; "></div></div>';
-              $('#day'+7+'_meal_container').append(meal_container[i]);
+          // sort data and store as menu array in daily array
+          for(var k = 0; k < data.length; k++){
+            if( same_day_check(date_array[l],data[k].day) ) data_daily[l].push(data[k]);
+          }
 
-              for (var j=0; j < data[i].recipes.length; j++){
-                 var recipe_container = [];
-recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="thumbnail" href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive " src='+ data[i].recipes[j].image_url +'></a></div>';                 $('#' + data[i]._id).append(recipe_container[j]);
-              }
-             }
-           })
-           .fail(function(request, textStatus, errorThrown) {
-             $recipeId.html("Request " + request.status + " " + textStatus + " " + errorThrown);
-           });
+          populate_day_container(l, data_daily[l]);
+        }
+
+        get_user_favourites();
+        get_user_blacklist();
+      })
+      .fail(function(request, textStatus, errorThrown) {
+        alert("Request " + request.status + " " + textStatus + " " + errorThrown);
+      });
   });
   $('#run_button').trigger('click');
- });
+});

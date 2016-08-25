@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -10,10 +9,13 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+  <!-- font awesome -->
+  <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <!-- jquery ui link for popup -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <!-- group style sheet -->
   <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
-
   <link href="https://fonts.googleapis.com/css?family=Lobster|Raleway" rel="stylesheet">
 </head>
 
@@ -39,7 +41,7 @@
           <li><a class="hvr-underline-from-center"href="./weekly.html">Weekly</a></li>
           <li><a class="hvr-underline-from-center"href="./after_login_existing.html">Daily</a></li>
           <!-- <li><a href="/views/grocery.html">Grocery list</a></li> -->
-          <li><a class="hvr-underline-from-center"href="./login.html">Log in</a></li>
+          <!-- <li><a class="hvr-underline-from-center"href="./login.html">Log in</a></li> -->
           <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
          <ul class="dropdown-menu">
            <!-- <li><a href="/views/profile.html">Profile</a></li>
@@ -94,17 +96,7 @@
         </div>
 
         <!-- first row of images -->
-        <div class="row" id="day1_meal_container">
-          <!-- <div id="meal-image-holder" class="col-lg-3 col-md-3 col-xs-6 thumb thumbnail img-responsive">
-              <div class="hide">
-                input hidden message here
-              </div>
-
-                <div class="pull-right fav-margin">
-                  display text
-                </div>
-                <div id="test1"></div>
-            </div> -->
+        <div class="row meal_cont" id="day1_meal_container">
         </div>
 
 
@@ -126,7 +118,7 @@
         <!-- first row of images -->
         <div class="container">
 
-        <div class="row" id="day2_meal_container">
+        <div class="row meal_cont" id="day2_meal_container">
         </div>
       </div>
     </div>
@@ -141,7 +133,7 @@
           <p id="day3_date">xx</p>
         </div>
         <!-- first row of images -->
-        <div class="row" id="day3_meal_container">
+        <div class="row meal_cont" id="day3_meal_container">
         </div>
       </div>
     </div>
@@ -155,7 +147,7 @@
           <p id="day4_date">xx</p>
         </div>
         <!-- first row of images -->
-        <div class="row" id="day4_meal_container">
+        <div class="row meal_cont" id="day4_meal_container">
         </div>
       </div>
     </div>
@@ -169,7 +161,7 @@
           <p id="day5_date">xx</p>
         </div>
         <!-- first row of images -->
-        <div class="row" id="day5_meal_container">
+        <div class="row meal_cont" id="day5_meal_container">
         </div>
       </div>
     </div>
@@ -183,7 +175,7 @@
           <p id="day6_date">xx</p>
         </div>
         <!-- first row of images -->
-        <div class="row" id="day6_meal_container">
+        <div class="row meal_cont" id="day6_meal_container">
         </div>
       </div>
     </div>
@@ -197,14 +189,13 @@
           <p id="day7_date">xx</p>
         </div>
         <!-- first row of images -->
-        <div class="row" id="day7_meal_container">
+        <div class="row meal_cont" id="day7_meal_container">
         </div>
       </div>
     </div>
 
   </div>
   </div>
-  <!-- content for weekly page -->
 
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
