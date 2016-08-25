@@ -10,7 +10,11 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
+  <!-- font awesome -->
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <!-- jquery ui link for popup -->
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
   <!-- group style sheet -->
   <link rel="stylesheet" href="../styles/style.css" media="screen" title="no title" charset="utf-8">
 
@@ -42,8 +46,8 @@
           <li><a class="hvr-underline-from-center"href="/views/login.html">Log in</a></li>
           <li class="dropdown"><a class="dropdown-toggle hvr-underline-from-center" data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
          <ul class="dropdown-menu">
-           <li><a href="/views/profile.html">Profile</a></li>
-           <li><a href="/views/settings.html">Settings</a></li>
+           <!-- <li><a href="/views/profile.html">Profile</a></li>
+           <li><a href="/views/settings.html">Settings</a></li> -->
            <li><a href="/views/index.html">Log out</a></li>
        </ul>
       </li>
@@ -59,16 +63,95 @@
 </nav>
 
 
-  <body>
+
+<body>
+  <div class="container raleway-font">
+    <div class="row">
+      <div class="col-lg-12">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1> Plan your Meals</h1>
+
+    </div>
+
+  </div>
+
+</div>
+  <div class="container">
+    <div class="row">
+
+      <div class="container">
+
+      <div class="row ">
+        <div class="col-lg-12 ">
+
+        <div class="col-lg-3 col-lg-offset-4 center">
+          <div class="verControls">
+
+          <div class="verDayDisplay" id="day_display"></div>
+          <button class="btn btn-default verPrev">
+            < </button>
+              <button class="btn btn-default verNext"> > </button>
+          <div class="verDateDisplay" id="date_display"></div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="col-lg-6 col-lg-offset-3">
 
 
+  <ul id="tabs" class="raleway-font">
+      <li><a href="#" id="recommendations_tab" name="tab1">Recommendation</a></li>
+      <li><a href="#" id="favourites_tab" name="tab2">Favourite List</a></li>
+      <li><a href="#" id="blacklist_tab" name="tab2">Dislike</a></li>
+  </ul>
+</div>
+</div>
+      <div class="leftPanel col-md-3">
+        <div class="verticalCal ">
+
+
+        </div>
+        <div class="verticalMeals" id="display_day_body">
+
+          <div class="addMeal">
+            <h3 class="mealNumDisplay">add meal <br> <b>+</b> </h3>
+          </div>
+        </div>
+      </div>
+      <!-- popup box div  -->
+      <div id="dialog"></div>
+      <div class="rightPanel col-md-9 ">
+        <div id="recipePicturesPlanner"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
   <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+  <!-- Sly scrolling plugin -->
+  <script src="http://darsa.in/sly/examples/js/vendor/plugins.js"></script>
+  <script src="http://darsa.in/sly/js/sly.min.js"></script>
+  <!-- Moment calendar/date plugin -->
+  <script src="../scripts/calendar/moment.min.js"></script>
+
 
   <script type="text/javascript" src="../scripts/meal_planner.js">
   </script>
