@@ -16,7 +16,8 @@ $(function(){
       type: 'POST',
       dataType:'json'
     }).done(function(data) {
-      sessionStorage.setItem('connectId', data);
+      sessionStorage.setItem("user",data.id);
+      sessionStorage.setItem("token",data.token);
       window.location = 'after_signup.html';
   })
   .fail(function(request, textStatus, errorThrown) {
