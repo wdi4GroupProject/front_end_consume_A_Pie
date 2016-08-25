@@ -79,8 +79,7 @@ $(document).ready(function() {
        for (var i = 0; i < data.length; i++) {
          console.log(data[i]);
          $recipeImage.append(
-           $('<a href=/views/recipe.html?recipe_id=' + data[i]._id + '><img class="img-responsive thumbnail" style="height: 200px; width: 200px;" src='+ data[i].image_url +'></a>')
-         );
+$('<a href= "./recipe.html?recipe_id=' + data[i]._id + '"><img class="img-responsive thumbnail" style="height: 200px; width: 200px;" src='+ data[i].image_url +'></a>')         );
        }
 
     })
