@@ -8,8 +8,6 @@ App is deployed on: [gh-pages]
 
 Database is deployed on: https://team5-backend.herokuapp.com/
 
-* *The app is developed as part of the General Assembly Web Development Immersive (WDI) programme.* *
-
 
 ### Approach Taken
 
