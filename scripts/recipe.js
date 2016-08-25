@@ -79,7 +79,7 @@ var URL = 'https://team5-backend.herokuapp.com/API/recipes/'+URI;
       $("<p>  " + data.title + "</p>"));
 
       $recipeDirections.html(
-      $("<p>" + data.directions + "</p>"));
+      $("<p> Directions:" + data.directions + "</p>"));
 
       $recipeIngredients.html(
       $("<p>" + data.ingredients + "</p>"));
