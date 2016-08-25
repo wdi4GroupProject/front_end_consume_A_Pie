@@ -1,44 +1,44 @@
 // Calendar function
 $(document).ready(function() {
   //user authentication
-  var user = sessionStorage.getItem('user'),
-  token = sessionStorage.getItem('token');
-  $.ajax({
-      url: "https://team5-backend.herokuapp.com/API/authentication",
-      data: {
-        "user": user,
-      },
-      type: 'POST',
-      dataType: 'json',
-      beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-      }
-    }).done(function(data) {
-      console.log(data);
-    })
-    .fail(function(request, textStatus, errorThrown) {
-      console.log(textStatus);
-      window.location='login.html';
-    });
+  // var user = sessionStorage.getItem('user'),
+  // token = sessionStorage.getItem('token');
+  // $.ajax({
+  //     url: "https://team5-backend.herokuapp.com/API/authentication",
+  //     data: {
+  //       "user": user,
+  //     },
+  //     type: 'POST',
+  //     dataType: 'json',
+  //     beforeSend: function(xhr) {   
+  //       xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
+  //     }
+  //   }).done(function(data) {
+  //     console.log(data);
+  //   })
+  //   .fail(function(request, textStatus, errorThrown) {
+  //     console.log(textStatus);
+  //     window.location='login.html';
+  //   });
 
-//logout
-  $("#logout").on('click',function(){
+  //logout
+  $("#logout").on('click', function() {
     var token = sessionStorage.getItem('token');
     $.ajax({
-      url: "https://team5-backend.herokuapp.com/API/logout",
-      type: 'GET',
-      beforeSend: function(xhr) {   
-        xhr.setRequestHeader("Authorization", "Bearer "+token+"");   
-      }
-    }).done(function(data) {
-      sessionStorage.removeItem('user');
-      sessionStorage.removeItem('token');
-      window.location = 'index.html';
-  })
-  .fail(function(request, textStatus, errorThrown) {
-    alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+        url: "https://team5-backend.herokuapp.com/API/logout",
+        type: 'GET',
+        beforeSend: function(xhr) {   
+          xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+        }
+      }).done(function(data) {
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('token');
+        window.location = 'index.html';
+      })
+      .fail(function(request, textStatus, errorThrown) {
+        alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
+      });
   });
-});
 
   (function() {
     var $frame = $('#horizontalCal');
@@ -117,6 +117,26 @@ $(document).ready(function() {
       }
 
     }).done(function(data) {
+      var list = [];
+      for (var i = 0; i < data.length; i++) {
+        for (var j = 0; j < data[i].recipes.length; j++) {
+          if (data[i].recipes[j].ingredients.length > 0) {
+            list = list.concat(data[i].recipes[j].ingredients);
+          }
+
+        }
+      }
+      var sortedList = list.sort(),
+        newList = [],
+        count = {};
+      for (var n = 0; n < sortedList.length; n++) {
+        count[sortedList[n]] = (count[sortedList[n]] || 0) + 1;
+        if (sortedList[n] !== sortedList[n + 1]) {
+          newList.push(count[sortedList[n]].toString() + 'x' + sortedList[n]);
+        }
+
+      }
+      console.log(newList);
       meals_for_21days = data;
 
       var display_day_meals = find_same_day_meals(display_date, meals_for_21days);

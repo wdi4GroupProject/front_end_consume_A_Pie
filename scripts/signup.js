@@ -17,7 +17,7 @@ $(function(){
       dataType:'json'
     }).done(function(data) {
       sessionStorage.setItem('connectId', data);
-      window.location = 'after_login.html';
+      window.location = 'after_signup.html';
   })
   .fail(function(request, textStatus, errorThrown) {
     alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
