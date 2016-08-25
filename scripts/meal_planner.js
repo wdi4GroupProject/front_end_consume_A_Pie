@@ -9,6 +9,7 @@ $(document).ready(function() {
    var userID              = "57bcf4656862c50300de1058"; // for ajax calls
    var URL = 'https://team5-backend.herokuapp.com/API/recipes';
    console.log(URL);
+
    $.ajax({
      url: URL,
      type: 'GET',
@@ -21,19 +22,21 @@ $(document).ready(function() {
       for (var i = 0; i < data.length; i++) {
         // console.log(data[i]);
         $recipeImage.append(
-          $('<div class="hoverContainer"><div class="hovereffect"><img style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p><a href="./recipe.html?recipe_id=' + data[i]._id + '"><i class="icon-external-link"></i></a> <i class="icon-heart"></p></div></div></div>')
+          $('<div class="hoverContainer"><div class="hovereffect"><img style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><a href="./recipe.html?recipe_id=' + data[i]._id + '"><i class="icon-external-link"></i></a> <i class="icon-frown"></i> <i class="icon-heart"></i> </div></div></div>')
         );
       }
    })
       .fail(function(request, textStatus, errorThrown) {
         $recipeDirections.html("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
       });
+
 // vertical calendar display
 var verDay  = $('#day_display'),
     verDate = $('#date_display'),
     verDate_formatted = 0,
     // verDate_value = nil;
     j       = 0;
+
 // function for updating dates
 var update_dates = function(counter){
    verDay.html( moment().add(counter, 'd').format('dddd') );
@@ -41,6 +44,7 @@ var update_dates = function(counter){
    verDate_formatted = moment().add(counter, 'd').format('YYYY-MM-DD');
   //  var verDate_value = new Date(moment().add(counter, 'd').format('YYYY,MM,DD'));
 };
+
 // ajax call based on verDate
 var meals_ajax_call = function(){
 $.ajax({
@@ -84,7 +88,9 @@ meals_ajax_call();
    update_dates(j);
    meals_ajax_call();
  });
+
 // meal display + add recipes to meal - Steph
+
 // user meals display, click to add new meal div
  $('div.verticalMeals').on('click', '.addMeal', function(){
   //  console.log('click me');
@@ -107,6 +113,7 @@ meals_ajax_call();
         $('#display_day_body').html("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
     });
 });
+
 // delete meals
 $('.verticalMeals').on('click', '.deleteMeal', function() {
   if(confirm("Are you sure you want to delete this meal?")) {
@@ -129,20 +136,11 @@ $('.verticalMeals').on('click', '.deleteMeal', function() {
 });
 
 // // allow only one recipe to be selected
-// $('.rightPanel').on('click', '.hoverContainer', function() {
-//   $('.selectRecipe').removeClass('selectRecipe');
-//     $($(this).find('img')).toggleClass('selectRecipe');
-// });
-
 $('.rightPanel').on('click', '.hoverContainer', function() {
-  $('.selectRecipe').removeClass('selectRecipe');
-  // console.log($(this).find('img'));
-  console.log($($(this).find('img')));
-
   if( $($(this).find('img')).hasClass('selectRecipe') ) {
-    // $($(this).find('img')).removeClass();
-    console.log('something');
+    $($(this).find('img')).removeClass('selectRecipe');
   } else {
+    $('.selectRecipe').removeClass('selectRecipe');
     $($(this).find('img')).addClass('selectRecipe');
   }
 });
@@ -165,6 +163,7 @@ $('.verticalMeals').on('click', 'div.mealCont', function() {
     console.log('Select a recipe to add to your meal');
   }
 });
+
 // selected recipes in meal - popup on click
 $('.verticalMeals').on('click', 'img', function() {
   var selectedImg = $(this).attr('src');
@@ -173,6 +172,7 @@ $('.verticalMeals').on('click', 'img', function() {
   $('#dialog').html( '<img src="'+ selectedImg + '" width="300" height="300">' );
   $('#dialog').dialog("open");
 });
+
 // delete recipe from meal
 $("#dialog").dialog({
   autoOpen: false,
@@ -206,6 +206,23 @@ $("#dialog").dialog({
       }
     ]
   });
+
+// indicate recipe has been liked
+$('#recipePicturesPlanner').on('click', '.icon-heart', function() {
+  $(this).toggleClass('recipeFav');
+});
+
+// hide recipe when dislike
+$('#recipePicturesPlanner').on('click', '.icon-frown', function() {
+  if (confirm('Are you sure you want to hide this recipe?')) {
+    $(this).closest('.hoverContainer').hide();
+  } else {
+    return false;
+  }
+});
+
+
+
 // AJAX call to retrieve meals for date
 // AJAX call to show picture & title of meal for day
 // AJAX POST to add meal to day
