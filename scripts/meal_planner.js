@@ -7,40 +7,57 @@ $(document).ready(function() {
    var $recipeIngredients   = $('#ingredient-img');
    var $recipeCalories      = $('#calories');
    var userID              = "57bcf4656862c50300de1058"; // for ajax calls
-   var URL = 'https://team5-backend.herokuapp.com/API/recipes';
-   console.log(URL);
+   var token                = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ";
+
+   var populate_recipeImage = function(data){
+     for (var i = 0; i < data.length; i++) {
+       $recipeImage.append(
+         $('<div class="hoverContainer"><div class="hovereffect"><img id="'+ data[i]._id +'" class="img-responsive thumbnail" style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p> <i class="icon-external-link"></i> <i class="icon-frown"></i> <i class="icon-heart" id="heart_' + data[i]._id + '"></i></p></div></div></div>')
+       );
+     }
+   };
+
+   var populate_user_recommendations = function(){
    $.ajax({
-     url: URL,
+     url: "https://team5-backend.herokuapp.com/API/recipes",
      type: 'GET',
      dataType: 'json',
      beforeSend: function(xhr) {
-          xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+          xhr.setRequestHeader("Authorization", "Bearer " + token);
         }
     })
     .done(function(data) {
-      for (var i = 0; i < data.length; i++) {
-        // console.log(data[i]);
-        $recipeImage.append(
-          $('<div class="hoverContainer"><div class="hovereffect"><img style="height: 200px; width: 200px; padding: 10px;" src='+ data[i].image_url +'><div class="overlay"><h2>' + data[i].title + '</h2><p><i class="icon-external-link"></i> <i class="icon-heart"></i></p></div></div></div>')
-        );
-      }
+      $recipeImage.html("");
+      populate_recipeImage(data);
+      get_user_favourites();
+      get_user_blacklist();
    })
       .fail(function(request, textStatus, errorThrown) {
         $recipeDirections.html("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
       });
+    };
+
+    //trigger on load
+    populate_user_recommendations();
+
+    // trigger on click
+    $('#recommendations_tab').on('click', function() {
+      populate_user_recommendations();
+    });
+
 // vertical calendar display
 var verDay  = $('#day_display'),
     verDate = $('#date_display'),
     verDate_formatted = 0,
-    // verDate_value = nil;
     j       = 0;
+
 // function for updating dates
 var update_dates = function(counter){
    verDay.html( moment().add(counter, 'd').format('dddd') );
    verDate.html( moment().add(counter, 'd').format('DD MMM YYYY') );
    verDate_formatted = moment().add(counter, 'd').format('YYYY-MM-DD');
-  //  var verDate_value = new Date(moment().add(counter, 'd').format('YYYY,MM,DD'));
 };
+
 // ajax call based on verDate
 var meals_ajax_call = function(){
 $.ajax({
@@ -53,18 +70,19 @@ $.ajax({
     user_id: userID
   },
   beforeSend: function(xhr) {
-       xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+       xhr.setRequestHeader("Authorization", "Bearer " + token);
      }
  })
  .done(function(data) {
    $('#display_day_body').html("");
    for (var k = 0; k < data.length; k++) {
-     $('#display_day_body').append('<div class="mealCont" id="'+ data[k]._id +'"><a class="deleteMeal" id="delete_'+ data[k]._id +'"></a><h3 class="mealNumDisplay">meal</h3></div>');
+     $('#display_day_body').append('<div style="overflow:auto;" class="mealCont thumb col-sm-12 " id="' + data[k]._id + '"><a class="deleteMeal " id="delete_'+ data[k]._id +'"></a><h3 class="mealNumDisplay">meal</h3></div>');
+
      for (var l = 0; l < data[k].recipes.length; l++){
-       $('#'+data[k]._id).append('<img src="'+ data[k].recipes[l].image_url +'" width = "60">');
+       $('#'+data[k]._id).append('<img id="thumb_'+ data[k].recipes[l]._id +'" class="thumbnail img-responsive col-sm-3 col-sm-offset-1 " src="'+ data[k].recipes[l].image_url +'" style="height: 60px; width: 60px; object-fit:contain !important;">');
      }
    }
-   $('#display_day_body').append('<div class="addMeal"><h3 class="mealNumDisplay">add meal <br> <b>+</b> </h3></div>');
+   $('#display_day_body').append('<div class="addMeal col-sm-3 "><h3 class="mealNumDisplay">add meal <br> <b>+</b> </h3></div>');
  })
    .fail(function(request, textStatus, errorThrown) {
      $('#display_day_body').html("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
@@ -72,6 +90,7 @@ $.ajax({
 };
 update_dates();
 meals_ajax_call();
+
 // creating previous day button
  $('.verPrev').click(function() {
    j -= 1;
@@ -97,7 +116,7 @@ meals_ajax_call();
        user_id: userID
      },
      beforeSend: function(xhr) {
-          xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+          xhr.setRequestHeader("Authorization", "Bearer " + token);
         }
     })
     .done(function(data) {
@@ -107,6 +126,7 @@ meals_ajax_call();
         $('#display_day_body').html("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
     });
 });
+
 // delete meals
 $('.verticalMeals').on('click', '.deleteMeal', function() {
   if(confirm("Are you sure you want to delete this meal?")) {
@@ -114,9 +134,8 @@ $('.verticalMeals').on('click', '.deleteMeal', function() {
   $.ajax({
     url: 'https://team5-backend.herokuapp.com/API/meals?id='+delete_meal_id,
     type: 'DELETE',
-    // dataType: 'json',
     beforeSend: function(xhr) {
-         xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU3YmNmNDY1Njg2MmM1MDMwMGRlMTA1OCIsImlhdCI6MTQ3MjAwMTEyNSwiZXhwIjoxNDcyMDM3MTI1fQ.rFPdKI7mxUZA7NV9-0IgsoRd2r4nryQ8kIg-tVnWzkQ");
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
        }
    })
    .done(function(data) {
@@ -127,11 +146,17 @@ $('.verticalMeals').on('click', '.deleteMeal', function() {
    });
 } else { return false; }
 });
+
 // allow only one recipe to be selected
 $('.rightPanel').on('click', '.hoverContainer', function() {
-  $('.selectRecipe').removeClass('selectRecipe');
+  if( $($(this).find('img')).hasClass('selectRecipe') ) {
+    $($(this).find('img')).removeClass('selectRecipe');
+  } else {
+    $('.selectRecipe').removeClass('selectRecipe');
     $($(this).find('img')).addClass('selectRecipe');
+  }
 });
+
 // add recipes to meal div
 $('.verticalMeals').on('click', 'div.mealCont', function() {
   // can only click meal list if one recipe is selected
@@ -140,11 +165,32 @@ $('.verticalMeals').on('click', 'div.mealCont', function() {
     $(this).addClass('selectMeal')
            .delay(1000)
            .queue(function() {
-               $(this).append( '<img src="'+ ($('img.selectRecipe').attr('src')) + '" width="60">' );
+               $(this).append( '<img id="thumb_'+ $('.selectRecipe').attr('id') +'" src="'+ ($('img.selectRecipe').attr('src')) + '" width="60">' );
                $(this).removeClass('selectMeal');
                $('div.rightPanel img').removeClass();
                $(this).dequeue();
            });
+  // ajax call to create meal
+  var meal_id = this.id;
+  var recipeID = $('.selectRecipe').attr('id');
+  $.ajax({
+    url: 'https://team5-backend.herokuapp.com/API/meals/'+meal_id,
+    type: 'PUT',
+    data: {
+      recipes: recipeID
+    },
+    dataType: 'json',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       }
+   })
+   .done(function(data) {
+     console.log(data);
+   })
+    .fail(function(request, textStatus, errorThrown) {
+      alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+   });
+
   // if click meal before selecting recipe, send prompt?
   } else {
     console.log('Select a recipe to add to your meal');
@@ -164,14 +210,6 @@ $("#dialog").dialog({
   modal: true,
   draggable: true,
   closeOnEscape: true,
-  // show: {
-  //     effect: "drop",
-  //     duration: 1000
-  // },
-  // hide: {
-  //     effect: "drop",
-  //     duration: 1000
-  //   },
     closeText: null,
     title: 'recipe',
     buttons: [
@@ -179,8 +217,28 @@ $("#dialog").dialog({
         id:"btn-delete",
         text: "Delete",
         click: function() {
-          $('.selectedRecipeInMeal').remove();
-          $(this).dialog( "close" );
+          var recipeID = $('.selectedRecipeInMeal').attr('id').split('_')[1];
+          var mealID = $('.selectedRecipeInMeal').parent().attr('id') ;
+          $.ajax({
+            url: 'https://team5-backend.herokuapp.com/API/meals/'+ mealID, // +'?recipe='+ recipeID,
+            data: {
+              recipe: recipeID
+            },
+            type: 'DELETE',
+            // dataType: 'json',
+            beforeSend: function(xhr) {
+                 xhr.setRequestHeader("Authorization", "Bearer " + token);
+               }
+           })
+           .done(function(data) {
+            //  $('#delete_'+delete_meal_id).parent().remove();
+
+           })
+            .fail(function(request, textStatus, errorThrown) {
+              alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+           });
+           $('.selectedRecipeInMeal').remove();
+           $(this).dialog( "close" );
         }
       },
       {
@@ -191,16 +249,168 @@ $("#dialog").dialog({
       }
     ]
   });
-// AJAX call to retrieve meals for date
-// AJAX call to show picture & title of meal for day
-// AJAX POST to add meal to day
-// AJAX POST to delete meal from day
-// AJAX POST to add recipe to meal
-// AJAX POST to delete recipe from meal
-// AJAX to get favourite recipes
-// AJAX to fav recipe
-// AJAX to remove fav from recipe
-// AJAX to get blacklist recipes
-// AJAX to blacklist recipe
-// AJAX to remove blacklist from recipe
-});
+
+  // indicate recipe has been liked
+  $('#recipePicturesPlanner').on('click', '.icon-heart', function() {
+    $(this).toggleClass('recipeFav');
+  });
+  // hide recipe when dislike
+  $('#recipePicturesPlanner').on('click', '.icon-frown', function() {
+    if (confirm('Are you sure you want to hide this recipe?')) {
+      $(this).closest('.hoverContainer').hide();
+    } else {
+      return false;
+    }
+  });
+  
+  // AJAX to fav recipe & to remove the same recipes from fav list
+  var addon_user_favourites = function(recipeID){
+    console.log (recipeID);
+    console.log (userID);
+  $.ajax({
+    url: 'https://team5-backend.herokuapp.com/API/users?action=like&recipe_id='+recipeID +'&id=' + userID,
+    type: 'PUT',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       }
+     })
+     .done(function(data) {
+      //  console.log ('like');
+      //  console.log (data);
+    })
+     .fail(function(request, textStatus, errorThrown) {
+       console.log(request);
+       alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+     });
+  };
+
+  // AJAX to blacklist recipe & to remove the same recipes from blacklist
+  var addon_user_blacklist = function(recipeID){
+  $.ajax({
+    url: 'https://team5-backend.herokuapp.com/API/users?action=dislike&id='+ userID + '&recipe_id=' + recipeID,
+    type: 'PUT',
+    // dataType: 'json',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       }
+     })
+     .done(function(data) {
+      //  console.log ('dislike');
+      //  console.log (data);
+    })
+     .fail(function(request, textStatus, errorThrown) {
+       console.log(request);
+       alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+     });
+  };
+
+  $('#recipePicturesPlanner').on('click', 'i.icon-frown', function() {
+    var recipeID_dislike = this.id.split('_')[1];
+    addon_user_blacklist(recipeID_dislike);
+  });
+
+  $('#recipePicturesPlanner').on('click', 'i.icon-heart', function() {
+    var recipeID_heart = this.id.split('_')[1];
+    addon_user_favourites(recipeID_heart);
+  });
+
+
+  // AJAX to populate favourite recipes
+  var populate_user_favourites = function(){
+  $.ajax({
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+userID,
+    type: 'GET',
+    dataType: 'json',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       }
+     })
+     .done(function(data) {
+       $recipeImage.html("");
+       $recipeImage.append('<h2 class="text-center col-md-12">To remove like, click on recipe\'s heart</h2>');
+       populate_recipeImage(data);
+       get_user_favourites();
+       get_user_blacklist();
+    })
+     .fail(function(request, textStatus, errorThrown) {
+       alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+     });
+  };
+
+  $('#favourites_tab').on('click', function() {
+    populate_user_favourites();
+  });
+
+
+  // AJAX to populate blacklist recipes
+  var populate_user_blacklist = function(){
+  $.ajax({
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+userID,
+    type: 'GET',
+    dataType: 'json',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       }
+     })
+     .done(function(data) {
+       for (var i = 0; i < data.length; i++) {
+         $recipeImage.html("");
+         $recipeImage.append('<h2 class="text-center col-md-12">To remove dislike, click on recipe\'s frowny face</h2>');
+         populate_recipeImage(data);
+         get_user_favourites();
+         get_user_blacklist();
+       }
+    })
+     .fail(function(request, textStatus, errorThrown) {
+       alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+     });
+  };
+
+  $('#blacklist_tab').on('click', function() {
+    populate_user_blacklist();
+  });
+
+
+  // AJAX to get favourite recipes
+  var get_user_favourites = function(){
+  $.ajax({
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+userID,
+    type: 'GET',
+    dataType: 'json',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       }
+     })
+     .done(function(data) {
+       for(var k=0; k < data.length; k++){
+          $('#heart_'+data[k]._id).addClass('recipeFav');
+       }
+    })
+     .fail(function(request, textStatus, errorThrown) {
+       alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+     });
+  };
+
+
+  // AJAX to get blacklist recipes
+  var get_user_blacklist = function(){
+  $.ajax({
+    url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+userID,
+    type: 'GET',
+    dataType: 'json',
+    beforeSend: function(xhr) {
+         xhr.setRequestHeader("Authorization", "Bearer " + token);
+       }
+     })
+     .done(function(data) {
+       for(var k=0; k < data.length; k++){
+          $('#frown_'+data[k]._id).addClass('recipeDis');
+       }
+    })
+     .fail(function(request, textStatus, errorThrown) {
+       alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+     });
+  };
+
+
+}); // close doc ready function
