@@ -73,7 +73,7 @@ var URL = 'https://team5-backend.herokuapp.com/API/recipes/'+URI;
       }
      }).done(function(data) {
       $recipeImage.html(
-      $("<img src=\"" + data.image_url + "\">"));
+      $("<img class='img-responsive thumbnail pull-left' style='min-height: 400px; max-height: 500px; max-width: 500px;' src=\"" + data.image_url + "\">"));
 
       $recipeTitle.html(
       $("<p>  " + data.title + "</p>"));

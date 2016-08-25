@@ -96,7 +96,7 @@ for (var i=1; i<8; i++){
 
         for (var j=0; j < data[i].recipes.length; j++){
            var recipe_container = [];
-recipe_container[j] = '<div class="col-lg-2 col-md-2 col-xs-6 thumb"><a class="thumbnail" href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive " src='+ data[i].recipes[j].image_url +'></a></div>';           $('#' + data[i]._id).append(recipe_container[j]);
+recipe_container[j] = '<div class="hoverContainer" style="width:150px; height: 150px"><div class="hovereffect" style="width:150px; height: 160px"><div class="thumbnail"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive" src='+ data[i].recipes[j].image_url +'></div><div class="overlay"><a href="./recipe.html?recipe_id=' + data[i].recipes[j]._id + '"><h2>' + data[i].recipes[j].title + '</h2></a></div></div></div>';
         }
        }
      })

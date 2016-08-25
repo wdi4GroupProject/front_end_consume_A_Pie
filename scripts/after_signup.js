@@ -79,7 +79,7 @@ $(document).ready(function() {
        for (var i = 0; i < data.length; i++) {
          console.log(data[i]);
          $recipeImage.append(
-$('<a href= "./recipe.html?recipe_id=' + data[i]._id + '"><img class="img-responsive thumbnail" style="height: 200px; width: 200px;" src='+ data[i].image_url +'></a>')         );
+$('<div class="col-md-3 col-sm-4 col-xs-4 thumb"><a class="thumbnail href= "./recipe.html?recipe_id=' + data[i]._id + '"><img class="img-responsive " style="height: 200px; width: 200px; object-fit:cover;" src='+ data[i].image_url +'></a></div>')         );
        }
 
     })
