@@ -8,6 +8,7 @@ $(function(){
 $("#btn-login").on('click',function(){
   var $email = $("#login-username"),
   $password = $("#login-password");
+  console.log($email.val(),$password.val());
   $.ajax({
     url: "https://team5-backend.herokuapp.com/API/login",
     data: {
