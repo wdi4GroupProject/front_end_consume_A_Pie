@@ -314,7 +314,7 @@ h3, h4, p, a {
   float: left;
   margin:  0;
   display: inline-block;
-  
+
 }
 
 #tabs a {
@@ -390,10 +390,13 @@ h3, h4, p, a {
 .verPrev {
   position: relative;
   float: left;
+  margin-top: -12px;
+
 }
 .verNext {
   position: relative;
   float: right;
+  margin-top: -12px;
 }
 
 /* vertical meals */
