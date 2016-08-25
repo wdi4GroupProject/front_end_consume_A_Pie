@@ -10,7 +10,7 @@ The app is developed as part of the General Assembly Web Development Immersive (
 
 ### Approach Taken
 
-
+Under a very calm and composed leadership, the team of six was divided into the front-end and back-end teams.
 
 
 ### Tech Used
