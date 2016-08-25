@@ -1,8 +1,8 @@
 // Calendar function
 $(document).ready(function() {
-<<<<<<< HEAD
-$(".se-pre-con").fadeOut("slow");;
-=======
+
+$(".se-pre-con").fadeOut("slow");
+
   $("#logout").on('click',function(){
     var token = sessionStorage.getItem('token');
     $.ajax({
@@ -21,7 +21,7 @@ $(".se-pre-con").fadeOut("slow");;
   });
 });
 
->>>>>>> d8f83d737b53d182e3682cdec1e116adafdfab53
+
   (function() {
     var $frame = $('#horizontalCal');
     var $wrap  = $frame.parent();
