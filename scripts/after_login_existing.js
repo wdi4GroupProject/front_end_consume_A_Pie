@@ -101,7 +101,7 @@ $(document).ready(function() {
 
 
     // AJAX call to retrieve meals for the week
-    var userID = "57bcf4656862c50300de1058"; // change to login user from sessions
+    // var userID = "57bcf4656862c50300de1058"; // change to login user from sessions
     var meals_for_21days = {};
     $.ajax({
       url: 'https://team5-backend.herokuapp.com/API/meals',
@@ -121,6 +121,8 @@ $(document).ready(function() {
 
       var display_day_meals = find_same_day_meals(display_date, meals_for_21days);
       create_new_meal_divs(display_day_meals);
+      get_user_favourites();
+      get_user_blacklist();
       fill_calendar(meals_for_21days);
     })
 
@@ -156,6 +158,96 @@ $(document).ready(function() {
       return same_day_meals;
     };
 
+    // AJAX to get favourite recipes
+    var get_user_favourites = function(){
+    $.ajax({
+      url: 'https://team5-backend.herokuapp.com/API/users/list?action=like&user_id='+user,
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
+       })
+       .done(function(data) {
+         for(var p=0; p < data.length; p++){
+            $('.heart_'+data[p]._id+'_').addClass('recipeFav');
+         }
+      })
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+    // AJAX to get blacklist recipes
+    var get_user_blacklist = function(){
+    $.ajax({
+      url: 'https://team5-backend.herokuapp.com/API/users/list?action=dislike&user_id='+user,
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
+       })
+       .done(function(data) {
+         for(var p=0; p < data.length; p++){
+            $('.frown_'+data[p]._id+'_').addClass('recipeDis');
+         }
+      })
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+    // AJAX to fav or unlike recipe
+    var addon_user_favourites = function(recipeID_fav){
+    $.ajax({
+      url: 'https://team5-backend.herokuapp.com/API/users?action=like&recipe_id='+recipeID_fav +'&id=' + user,
+      type: 'PUT',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
+       })
+       .done(function(data) {
+         console.log('recipe toggled on favourites list');
+      })
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+    // AJAX to blacklist recipe & to remove the same recipes from blacklist
+    var addon_user_blacklist = function(recipeID_dis){
+    $.ajax({
+      url: 'https://team5-backend.herokuapp.com/API/users?action=dislike&id='+ user + '&recipe_id=' + recipeID_dis,
+      type: 'PUT',
+      beforeSend: function(xhr) {   
+        xhr.setRequestHeader("Authorization", "Bearer " + token + "");   
+      }
+       })
+       .done(function(data) {
+         console.log('recipe toggled on blacklist');
+      })
+       .fail(function(request, textStatus, errorThrown) {
+         alert("Error. Request " + request.status + " " + textStatus + " " + errorThrown);
+       });
+    };
+
+    $('#display_day_body').on('click', 'i.icon-frown', function() {
+      var recipeID_dislike = this.getAttribute("class").split('_')[1];
+      console.log(recipeID_dislike);
+      addon_user_blacklist(recipeID_dislike);
+      $('.frown_' + recipeID_dislike + '_').toggleClass('recipeDis');
+    });
+
+    $('#display_day_body').on('click', 'i.icon-heart', function() {
+      var recipeID_heart = this.getAttribute("class").split('_')[1];
+      console.log(recipeID_heart);
+      addon_user_favourites(recipeID_heart);
+      $('.heart_' + recipeID_heart + '_').toggleClass('recipeFav');
+    });
+
+
+
     // create meal divs and recipe images with link to recipes
     var create_new_meal_divs = function(target_meals) {
       // clear the display
@@ -166,12 +258,14 @@ $(document).ready(function() {
 
         for (var k = 0; k < target_meals.length; k++) {
           var meal_container = '<div id="' + target_meals[k]._id + '" class="row" style="padding: 20px 0 20px 0 ;border-bottom: 3px solid grey"></div>';
-          console.log(meal_container);
+          // console.log(meal_container);
 
           $('#display_day_body').append(meal_container);
 
           for (var l = 0; l < target_meals[k].recipes.length; l++) {
-            var recipe_container = '<div class="col-lg-3 col-md-3 col-xs-4 thumb" id="' + target_meals[k].recipes[l]._id + '"><a class="thumbnail" href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><img style=" height: 200px !important; overflow: auto; object-fit:cover;"class="img-responsive" src=' + target_meals[k].recipes[l].image_url + '></a><a class="pull-right fav-margin" style="text-decoration:none; cursor:pointer;">Add to Fav <i class="icon-heart"></i></a ></div>';
+            var recipe_container =
+            '<div class="hoverContainer" style="width:200px; height: 200px"><div class="hovereffect" style="width:180px; height: 180px"><div class="thumbnail" id="' + target_meals[k].recipes[l]._id + '"><img style=" height: 180px width: 180px !important; overflow: auto; object-fit:cover;" class="img-responsive" src=' + target_meals[k].recipes[l].image_url + '><div class="overlay"><h2>' + target_meals[k].recipes[l].title + '</h2><p><a href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><i class="icon-external-link"></i></a><i class="icon-frown frown_' + target_meals[k].recipes[l]._id + '_"></i><i class="icon-heart heart_' + target_meals[k].recipes[l]._id + '_"></i></p></div></div></div>';
+
             $('#' + target_meals[k]._id).append(recipe_container);
           }
         }
@@ -206,6 +300,8 @@ $(document).ready(function() {
       // populate the display according to the display date
       var display_day_meals = find_same_day_meals(display_date, meals_for_21days);
       create_new_meal_divs(display_day_meals);
+      get_user_favourites();
+      get_user_blacklist();
     };
 
     $('#reload').on('click', update_display_date);
