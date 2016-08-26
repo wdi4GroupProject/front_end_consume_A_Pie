@@ -197,7 +197,7 @@ $(function() {
 
         // populate meal containers with recipe images
         for (var j = 0; j < day_data[i].recipes.length; j++) {
-          $('#' + day_data[i]._id).append('<div class="hoverContainer" style="width:150px; height: 150px"><div class="hovereffect" style="width:150px; height: 160px"><div class="thumbnail"><img style="width:150px; height: 150px; overflow: auto; object-fit:cover;" class="img-responsive" src=' + day_data[i].recipes[j].image_url + '></div><div class="overlay"><h2>' + day_data[i].recipes[j].title + '</h2><p><a href="./recipe.html?recipe_id=' + day_data[i].recipes[j]._id + '"><i class="icon-external-link"></i></a><i class="icon-frown frown_' + day_data[i].recipes[j]._id + '_"></i><i class="icon-heart heart_' + day_data[i].recipes[j]._id + '_"></i></p></div></div></div>');
+          $('#' + day_data[i]._id).append('<div class="hoverContainer" style="width:200px; height: 200px"><div class="hovereffect" style="width:200px; height: 210px"><div class="thumbnail"><img style="width:200px; height: 200px; overflow: auto; object-fit:cover;" class="img-responsive" src=' + day_data[i].recipes[j].image_url + '></div><div class="overlay"><h2>' + day_data[i].recipes[j].title + '</h2><p><a href="./recipe.html?recipe_id=' + day_data[i].recipes[j]._id + '"><i class="icon-external-link"></i></a><i class="icon-frown frown_' + day_data[i].recipes[j]._id + '_"></i><i class="icon-heart heart_' + day_data[i].recipes[j]._id + '_"></i></p></div></div></div>');
         }
       }
     };

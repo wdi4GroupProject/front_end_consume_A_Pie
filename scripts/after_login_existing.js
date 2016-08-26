@@ -264,7 +264,7 @@ $(document).ready(function() {
 
           for (var l = 0; l < target_meals[k].recipes.length; l++) {
             var recipe_container =
-            '<div class="hoverContainer" style="width:200px; height: 200px"><div class="hovereffect" style="width:180px; height: 180px"><div class="thumbnail" id="' + target_meals[k].recipes[l]._id + '"><img style=" height: 180px width: 180px !important; overflow: auto; object-fit:cover;" class="img-responsive" src=' + target_meals[k].recipes[l].image_url + '><div class="overlay"><h2>' + target_meals[k].recipes[l].title + '</h2><p><a href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><i class="icon-external-link"></i></a><i class="icon-frown frown_' + target_meals[k].recipes[l]._id + '_"></i><i class="icon-heart heart_' + target_meals[k].recipes[l]._id + '_"></i></p></div></div></div>';
+            '<div class="hoverContainer" style="width:200px; height: 200px"><div class="hovereffect" style="width:200px; height: 200px"><div class="thumbnail" id="' + target_meals[k].recipes[l]._id + '"><img style=" height: 180px width: 180px !important; overflow: auto; object-fit:cover;" class="img-responsive" src=' + target_meals[k].recipes[l].image_url + '><div class="overlay"><h2>' + target_meals[k].recipes[l].title + '</h2><p><a href="./recipe.html?recipe_id=' + target_meals[k].recipes[l]._id + '"><i class="icon-external-link"></i></a><i class="icon-frown frown_' + target_meals[k].recipes[l]._id + '_"></i><i class="icon-heart heart_' + target_meals[k].recipes[l]._id + '_"></i></p></div></div></div>';
 
             $('#' + target_meals[k]._id).append(recipe_container);
           }
