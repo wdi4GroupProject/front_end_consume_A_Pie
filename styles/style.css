@@ -553,8 +553,20 @@ a.deleteMeal:hover {
   cursor: pointer;
 }
 
-.hovereffect i.recipeFav, .hovereffect i:hover.recipeFav {
+.hovereffect i.recipeFav {
   color: #D3534B;
+}
+
+.hovereffect i:hover.recipeFav {
+  color: #dd766f;
+}
+
+.hovereffect i.recipeDis {
+  color: #272e47;
+}
+
+.hovereffect i:hover.recipeDis {
+  color: #2980b9;
 }
 
 /*-----------------------------------------------------------------------------------------------------*/
