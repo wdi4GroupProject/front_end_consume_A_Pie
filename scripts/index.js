@@ -1,5 +1,9 @@
 // Calendar function
 $(document).ready(function() {
+  var token = sessionStorage.getItem('token');
+  if(token){
+    $('#loginbtn').hide();
+  }
 
 $(".se-pre-con").fadeOut("slow");
 
