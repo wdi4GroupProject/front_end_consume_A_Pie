@@ -2,6 +2,7 @@
 
 body {
   margin-top: 80px;
+  overflow: auto;
 }
 .backgrd-col-white {
   background-color: #fff !important;
