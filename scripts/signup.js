@@ -18,7 +18,7 @@ $(function(){
     }).done(function(data) {
       sessionStorage.setItem("user",data.id);
       sessionStorage.setItem("token",data.token);
-      window.location = 'after_signup.html';
+      window.location = 'after_login_existing.html';
   })
   .fail(function(request, textStatus, errorThrown) {
     alert('An error occurred during your request: ' + request.status + ' ' + textStatus + ' ' + errorThrown);
