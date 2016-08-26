@@ -85,7 +85,7 @@ var URL = 'https://team5-backend.herokuapp.com/API/recipes/'+URI;
       $("<p>" + data.ingredients + "</p>"));
 
       $recipeCalories.html(
-      $("<p> Calories: " + data.total_calories + "</p>"));
+      $("<p style='padding-left:10px'> Calories: " + data.total_calories + "</p>"));
 
     })
     .fail(function(request, textStatus, errorThrown) {
