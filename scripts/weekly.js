@@ -239,4 +239,9 @@ $(function() {
       });
   });
   $('#run_button').trigger('click');
+
+  $('#date_input').datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+
 });
