@@ -4,6 +4,8 @@ A-Meal-Zing is an app to help busy, health-conscious go-getters plan their daily
 
 Users will be shown a library of recommended recipes and may add selected recipes to a 'favourites list' for easy referencing, or add those they dislike to a 'black list' to remove them from the library. Both actions are reversible. 
 
+The backend Repo can be found on: https://github.com/wdi4GroupProject/consume-A-Pie
+
 App is deployed on: https://wdi4groupproject.github.io/front_end_consume_A_Pie/views/
 
 Database is deployed on: https://team5-backend.herokuapp.com/
